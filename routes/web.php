@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\RolesController;
+use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Backend\Auth\AuthenticatedSessionController;
@@ -21,9 +22,13 @@ use App\Http\Controllers\Backend\Auth\AuthenticatedSessionController;
 Route::get('/storage-shortcut', function () {
     Artisan::call('storage:link');
 });
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+Route::get('/', [PageController::class, 'home'])->name('home');
+
 Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
 Route::get('/login',[AuthenticatedSessionController::class,'create'])->name('login');
 Route::post('/login/submit',[AuthenticatedSessionController::class,'store'])->name('login.submit');
