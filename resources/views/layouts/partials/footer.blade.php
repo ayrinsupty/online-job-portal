@@ -6,11 +6,11 @@
                 <h2>Subscribe Newsletter</h2>
             </div>
             <div class="subscribe-shape">
-                <img src="frontend/assets/img/shape/1.png" alt="Shape">
-                <img src="frontend/assets/img/shape/1.png" alt="Shape">
-                <img src="frontend/assets/img/shape/1.png" alt="Shape">
-                <img src="frontend/assets/img/shape/1.png" alt="Shape">
-                <img src="frontend/assets/img/shape/2.png" alt="Shape">
+                <img src="{{ asset('frontend/assets/img/shape/1.png') }}" alt="Shape">
+                <img src="{{ asset('frontend/assets/img/shape/1.png') }}" alt="Shape">
+                <img src="{{ asset('frontend/assets/img/shape/1.png') }}" alt="Shape">
+                <img src="{{ asset('frontend/assets/img/shape/1.png') }}" alt="Shape">
+                <img src="{{ asset('frontend/assets/img/shape/2.png') }}" alt="Shape">
             </div>
             <div class="subscribe-item">
                 <form class="newsletter-form" data-toggle="validator">
@@ -171,8 +171,8 @@
                             <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> Gable. Designed By <a href="https://hibootstrap.com/"
-                                target="_blank">HiBootstrap</a>
+                            </script> Designed By <a href="https://dreammakesoft.com/"
+                                target="_blank">Dream Make Soft</a>
                         </p>
                     </div>
                 </div>

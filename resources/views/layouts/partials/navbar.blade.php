@@ -1,16 +1,16 @@
 <div class="navbar-area navbar-area-two fixed-top">
 
     <div class="mobile-nav">
-        <a href="index.html" class="logo">
-            <img src="frontend/assets/img/logo.png" alt="Logo">
+        <a href="{{ route('home') }}" class="logo">
+            <img src="{{ asset('frontend/assets/img/logo.png') }}" alt="Logo">
         </a>
     </div>
 
     <div class="main-nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="index.html">
-                    <img src="frontend/assets/img/logo.png" alt="Logo">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="{{ asset('frontend/assets/img/logo.png') }}" alt="Logo">
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav">
@@ -117,16 +117,38 @@
                             <a href="contact.html" class="nav-link">Contact</a>
                         </li>
                     </ul>
-                    <div class="common-btn">
-                        <a class="login-btn" href="login.html">
-                            <i class="icofont-plus-square"></i>
-                            Login
-                        </a>
-                        <a class="sign-up-btn" href="create-account.html">
-                            <i class="icofont-user-alt-4"></i>
-                            Sign Up
-                        </a>
-                    </div>
+
+                    <ul class="navbar-nav">
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link dropdown-toggle">{{ Auth::user()->full_name }} <i
+                                        class="icofont-simple-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <x-dropdown-link :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                                Logout
+                                            </x-dropdown-link>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @else
+                            <div class="common-btn">
+                                <a class="login-btn" href="{{ route('login') }}">
+                                    <i class="icofont-plus-square"></i>
+                                    Login
+                                </a>
+                                <a class="sign-up-btn" href="{{ route('register') }}">
+                                    <i class="icofont-user-alt-4"></i>
+                                    Sign Up
+                                </a>
+                            </div>
+                        @endauth
+                    </ul>
                 </div>
             </nav>
         </div>

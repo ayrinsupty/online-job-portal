@@ -130,9 +130,7 @@ jQuery(
             $("html, body").animate({ scrollTop: 0 }, 900);
             return false;
         });
-        $("body").append(
-            "<a href='https://themeforest.net/checkout/from_item/26313553?license=regular&support=bundle_6month&_ga=2.14942449.634514020.1646539215-1425290503.1590986634' target='_blank' class='buy-now-btn'><img src='frontend/assets/img/envato.png' alt='envato'/>Buy Now</a>"
-        );
+
         $("body").append(
             "<div class='switch-box'><label id='switch' class='switch'><input type='checkbox' onchange='toggleTheme()' id='slider'><span class='slider round'></span></label></div>"
         );

@@ -1,56 +1,96 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.master')
+@section('title')
+    User Login
+@endsection
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+@section('content')
+    <div class="page-title-area">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-text">
+                        <h2>Log In</h2>
+                        <ul>
+                            <li>
+                                <a href="{{ route('home') }}">Home</a>
+                            </li>
+                            <li>
+                                <i class="icofont-simple-right"></i>
+                            </li>
+                            <li>Log In</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+    <div class="login-area pt-100">
+        <div class="container">
+            <h2>Login Your Account</h2>
+            <div class="login-wrap">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-6">
+                        <div class="jobseeker-item">
+                            <div class="jobseeker-icon">
+                                <i class="flaticon-job-search"></i>
+                            </div>
+                            <div class="jobseeker-inner">
+                                <span>Candidate</span>
+                                <h3>Login as a Candidate</h3>
+                            </div>
+                            <a href="login.html">Get Started
+                                <i class="icofont-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-6">
+                        <div class="jobseeker-item">
+                            <div class="jobseeker-icon">
+                                <i class="flaticon-recruitment"></i>
+                            </div>
+                            <div class="jobseeker-inner">
+                                <span>Employer</span>
+                                <h3>Login as a Employer</h3>
+                            </div>
+                            <a href="login.html">Get Started
+                                <i class="icofont-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Username, Phone Number or Email" />
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Password" />
+                </div>
+                <div class="login-sign-in">
+                    <a href="#">Forgot Password?</a>
+                    <ul>
+                        <li>Don’t have an account ?</li>
+                        <li>
+                            <a href="{{ route('register') }}">Sign Up Here</a>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <button type="submit" class="btn login-btn">Sign In</button>
+                    </div>
+                </form>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
+            <div class="login-social">
+                <a href="https://www.facebook.com/" target="_blank">
+                    <i class="icofont-facebook"></i>
+                    Login With Facebook
+                </a>
+                <a class="login-google" href="https://mail.google.com/" target="_blank">
+                    <i class="icofont-google-plus"></i>
+                    Login With Google
+                </a>
             </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+        </div>
+    </div>
+@endsection
