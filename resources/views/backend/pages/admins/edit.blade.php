@@ -22,7 +22,7 @@
                                             <label for="basicInput">Name</label>
                                             <input type="text" name="name"
                                                 class="form-control  @error('name') is-invalid @enderror" id="name"
-                                                placeholder="Enter Name" value="{{ old('name', $admin->name) }}">
+                                                placeholder="Enter name" value="{{ old('name', $admin->name) }}">
                                             @error('name')
                                                 <strong class="text-danger">{{ $errors->first('name') }}</strong>
                                             @enderror
@@ -34,7 +34,7 @@
                                             <label for="basicInput">Username</label>
                                             <input type="text" name="username"
                                                 class="form-control @error('email') is-invalid @enderror" id="username"
-                                                placeholder="Enter Username"
+                                                placeholder="Enter username"
                                                 value="{{ old('username', $admin->username) }}">
                                             @error('username')
                                                 <strong class="text-danger">{{ $errors->first('username') }}</strong>
@@ -47,7 +47,7 @@
                                             <label for="basicInput">Email</label>
                                             <input type="email" name="email"
                                                 class="form-control @error('email') is-invalid @enderror" id="basicInput"
-                                                placeholder="Enter Email" value="{{ old('email', $admin->email) }}">
+                                                placeholder="Enter email" value="{{ old('email', $admin->email) }}">
                                             @error('email')
                                                 <strong class="text-danger">{{ $errors->first('email') }}</strong>
                                             @enderror
@@ -59,7 +59,7 @@
                                             <label for="basicInput">Phone</label>
                                             <input type="phone" name="phone"
                                                 class="form-control @error('phone') is-invalid @enderror" id="phone"
-                                                placeholder="Enter Phone no" value="{{ old('phone', $admin->phone) }}">
+                                                placeholder="Enter phone no" value="{{ old('phone', $admin->phone) }}">
                                             @error('phone')
                                                 <strong class="text-danger">{{ $errors->first('phone') }}</strong>
                                             @enderror
@@ -71,7 +71,7 @@
                                             <label for="basicInput">Password</label>
                                             <input type="password" name="password"
                                                 class="form-control @error('password') is-invalid @enderror" id="password"
-                                                placeholder="Enter Password">
+                                                placeholder="Enter password">
                                             @error('password')
                                                 <strong class="text-danger">{{ $errors->first('password') }}</strong>
                                             @enderror
@@ -83,7 +83,7 @@
                                             <label for="basicInput">Confirm Password</label>
                                             <input type="password" name="password_confirmation"
                                                 class="form-control @error('password_confirmation') is-invalid @enderror"
-                                                id="password_confirmation" placeholder="Enter Confirm Password">
+                                                id="password_confirmation" placeholder="Enter confirm password">
                                             @error('password_confirmation')
                                                 <strong
                                                     class="text-danger">{{ $errors->first('password_confirmation') }}</strong>

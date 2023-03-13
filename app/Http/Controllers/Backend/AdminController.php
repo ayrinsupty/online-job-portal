@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -78,15 +79,16 @@ class AdminController extends Controller
             'phone' => 'required|max:11|min:11|regex:' . phoneNoRegex() . '|unique:' . with(new Admin)->getTable() . ',phone',
             'password' => 'required|min:8|confirmed',
         ]);
-        $user = new Admin();
-        $user->name = $request->name;
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->password = Hash::make($request->password);
-        $user->save();
-        if ($request->roles) {
-            $user->assignRole($request->roles);
+        $admin = new Admin();
+        $admin->name = $request->name;
+        $admin->slug = Str::slug($request->name);
+        $admin->username = $request->username;
+        $admin->email = $request->email;
+        $admin->phone = $request->phone;
+        $admin->password = Hash::make($request->password);
+        $admin->save();
+        if ($request->admins) {
+            $admin->assignRole($request->roles);
         }
         session()->flash('success', 'Admin has been created');
         return redirect()->route('admin.admins.index');
@@ -137,17 +139,19 @@ class AdminController extends Controller
             'phone' => 'required|max:11|min:11|regex:' . phoneNoRegex() . '|unique:' . with(new Admin)->getTable() . ',phone,' . $id,
             'password' => 'nullable|min:8|confirmed',
         ]);
-
+        $user = new Admin();
         $user->name = $request->name;
+        $user->slug = Str::slug($request->name);
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->phone = $request->phone;
         if ($request->password != null) {
             $user->password = Hash::make($request->password);
         }
         $user->save();
-        $user->roles()->detach();
-        if ($request->roles) {
-            $user->assignRole($request->roles);
+        $user->users()->detach();
+        if ($request->user) {
+            $user->assignRole($request->users);
         }
         session()->flash('success', 'Admin has been updated');
         return back();
@@ -186,6 +190,5 @@ class AdminController extends Controller
                 return response()->json(['status' => 422,]);
             }
         }
-
     }
 }

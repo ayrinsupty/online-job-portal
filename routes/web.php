@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Backend\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Backend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::get('/',[DashboardController::class,'index'])->name('home');
 Route::resource('roles', RolesController::class,['names'=>'roles']);
 Route::resource('admins', AdminController::class,['names'=>'admins']);
 Route::get('admins/status/{slug}', [AdminController::class, 'isActive'])->name('admins.status');
+Route::resource('users', UserController::class,['names'=>'users']);
+Route::get('users/status/{slug}', [UserController::class, 'isActive'])->name('users.status');
 
 });
 Route::get('/dashboard', function () {

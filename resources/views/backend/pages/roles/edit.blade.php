@@ -22,7 +22,6 @@
                                         id="basicInput" placeholder="Enter role">
                                 </div>
 
-
                                 @foreach ($permission_groups as $group)
                                     <div class="row">
                                         @php  $i = 1;  @endphp
@@ -61,7 +60,8 @@
                                     @endphp
                                 @endforeach
 
-                                <button type="submit" class="btn btn-outline-success">Update {{ $pageHeader['singular_name'] }}</button>
+                                <button type="submit" class="btn btn-outline-success">Update
+                                    {{ $pageHeader['singular_name'] }}</button>
                             </form>
                         </div>
                     </div>

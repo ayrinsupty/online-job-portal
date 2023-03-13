@@ -24,6 +24,7 @@ class Admin extends Authenticatable
         'name',
         'username',
         'email',
+        'email_verified_at',
         'phone',
         'password',
         'image',
@@ -39,7 +40,7 @@ class Admin extends Authenticatable
         'password',
         'remember_token',
     ];
-    public static $statusArrays = ['active','deactivate'];
+    public static $statusArrays = ['active', 'deactive'];
     /**
      * The attributes that should be cast.
      *
@@ -76,4 +77,5 @@ class Admin extends Authenticatable
             }
         }
         return $hasPermission;
-    }}
+    }
+}

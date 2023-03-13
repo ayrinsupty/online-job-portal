@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -18,8 +17,8 @@ class RolePermissionSeeder extends Seeder
     public function run()
     {
         // Create Roles
-        $roleSuperAdmin = Role::create(['name' => 'superadmin','guard_name' => 'admin']);
-        $roleAdmin = Role::create(['name' => 'admin','guard_name' => 'admin']);
+        $roleSuperAdmin = Role::create(['name' => 'Super Admin','guard_name' => 'admin']);
+        $roleAdmin = Role::create(['name' => 'Admin','guard_name' => 'admin']);
 
 
         // Permission List as array
@@ -35,7 +34,7 @@ class RolePermissionSeeder extends Seeder
             [
                 'group_name' => 'admin',
                 'permissions' => [
-                    // admin Permissions
+                    // Admin Permissions
                     'admin.create',
                     'admin.view',
                     'admin.edit',
@@ -46,7 +45,7 @@ class RolePermissionSeeder extends Seeder
             [
                 'group_name' => 'role',
                 'permissions' => [
-                    // role Permissions
+                    // Role Permissions
                     'role.create',
                     'role.view',
                     'role.edit',
@@ -57,7 +56,7 @@ class RolePermissionSeeder extends Seeder
             [
                 'group_name' => 'user',
                 'permissions' => [
-                    // user Permissions
+                    // User Permissions
                     'user.create',
                     'user.view',
                     'user.edit',

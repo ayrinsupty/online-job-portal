@@ -80,6 +80,33 @@
                     </li>
                 @endif
 
+                {{-- User --}}
+                @if (
+                    $userGuard->can('user.view') ||
+                        $userGuard->can('user.create') ||
+                        $userGuard->can('user.edit') ||
+                        $userGuard->can('user.delete'))
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>User's</span>
+                        </a>
+                        <ul class="submenu"
+                            {{ Route::is('admin.users.create') || Route::is('admin.users.edit') || Route::is('admin.users.index') ? 'style=display:block;' : '' }}>
+                            <li class="submenu-item ">
+                                @if ($userGuard->can('user.view'))
+                                    <a {{ Route::is('admin.users.edit') || Route::is('admin.users.index') ? 'style=color:#435ebe;' : '' }}
+                                        href="{{ route('admin.users.index') }}">User's</a>
+                                @endif
+                                @if ($userGuard->can('user.create'))
+                                    <a {{ Route::is('admin.users.create') ? 'style=color:#435ebe;' : '' }}
+                                        href="{{ route('admin.users.create') }}">Create User</a>
+                                @endif
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
                 <li class="sidebar-title">Raise Support</li>
 
                 <li class="sidebar-item  ">

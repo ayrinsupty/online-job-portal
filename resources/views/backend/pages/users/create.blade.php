@@ -14,34 +14,34 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="{{ route('admin.admins.store') }}" method="POST">
+                            <form action="{{ $pageHeader['store_route'] }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="basicInput">Name</label>
-                                            <input type="text" name="name"
-                                                class="form-control @error('name') is-invalid @enderror" id="name"
-                                                placeholder="Enter name">
-                                            @error('name')
-                                                <strong class="text-danger">{{ $errors->first('name') }}</strong>
+                                            <label for="basicInput">First Name</label>
+                                            <input type="text" name="first_name"
+                                                class="form-control @error('first_name') is-invalid @enderror"
+                                                id="name" placeholder="Enter first name">
+                                            @error('first_name')
+                                                <strong class="text-danger">{{ $errors->first('first_name') }}</strong>
                                             @enderror
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="basicInput">Username</label>
-                                            <input type="text" name="username"
-                                                class="form-control @error('username') is-invalid @enderror" id="username"
-                                                placeholder="Enter username">
-                                            @error('username')
-                                                <strong class="text-danger">{{ $errors->first('username') }}</strong>
+                                            <label for="basicInput">Last Name</label>
+                                            <input type="text" name="last_name"
+                                                class="form-control @error('last_name') is-invalid @enderror" id="name"
+                                                placeholder="Enter last name">
+                                            @error('last_name')
+                                                <strong class="text-danger">{{ $errors->first('last_name') }}</strong>
                                             @enderror
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">Email</label>
                                             <input type="email" name="email"
@@ -67,43 +67,39 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="basicInput">Password</label>
-                                            <input type="password" name="password"
-                                                class="form-control @error('password') is-invalid @enderror" id="password"
-                                                placeholder="Enter password">
-                                            @error('password')
-                                                <strong class="text-danger">{{ $errors->first('password') }}</strong>
+                                            <label for="basicInput">Address</label>
+                                            <input type="text" name="address"
+                                                class="form-control @error('address') is-invalid @enderror" id="address"
+                                                placeholder="Enter address">
+                                            @error('address')
+                                                <strong class="text-danger">{{ $errors->first('address') }}</strong>
                                             @enderror
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="basicInput">Confirm Password</label>
-                                            <input type="password" name="password_confirmation"
-                                                class="form-control @error('password_confirmation') is-invalid @enderror"
-                                                id="password_confirmation" placeholder="Enter confirm password"
-                                                value="{{ old('password_confirmation') }}">
-                                            @error('password_confirmation')
-                                                <strong
-                                                    class="text-danger">{{ $errors->first('password_confirmation') }}</strong>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="basicInput">Select Role</label>
-                                            <select name="roles[]" class="choices form-select multiple-remove"
-                                                multiple="multiple">
-                                                @foreach ($roles as $role)
-                                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                                @endforeach
+                                            <label for="basicInput">User Type</label>
+                                            <select name="type" required class="form-control" id="user_type">
+                                                <option value="">-- Choose Type --</option>
+                                                <option value="Agent">Agent</option>
+                                                <option value="Seeker">Seeker</option>
                                             </select>
                                         </div>
                                     </div>
-                                </div>
 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="basicInput">Image</label>
+                                            <input type="file" name="image"
+                                                class="form-control @error('image') is-invalid @enderror" id="image"
+                                                value="{{ old('image') }}">
+                                            @error('image')
+                                                <strong class="text-danger">{{ $errors->first('image') }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-outline-success">Create
                                     {{ $pageHeader['singular_name'] }}</button>
                             </form>

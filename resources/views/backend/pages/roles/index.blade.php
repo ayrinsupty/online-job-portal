@@ -41,7 +41,7 @@
                                         @endif
                                     </td>
                                 </tr>
-                                @empty
+                            @empty
                                 <tr>
                                     <td colspan="4"></td>
                                     <td colspan="6">No Data Found! <a class="btn btn-info"

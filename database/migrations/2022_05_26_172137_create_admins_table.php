@@ -17,14 +17,13 @@ return new class extends Migration
         Schema::create(with(new Admin)->getTable(), function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('phone')->unique();
             $table->string('username')->unique();
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone')->unique();
             $table->string('password');
             $table->string('image')->nullable();
             $table->string('type')->default('admin');
-            $table->string('institute_id')->nullable();
             $table->string('status')->default('inactive');
             $table->rememberToken();
             $table->timestamps();

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -32,7 +31,6 @@ class UserController extends Controller
             'create_route' => route($this->create_route),
             'store_route' => route($this->store_route),
             'base_url' => url('admin/users'),
-
         ];
         Paginator::useBootstrapFive();
     }
@@ -43,10 +41,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->checkOwnPermission('view');
+        $this->checkOwnPermission('user.view');
         $pageHeader = $this->pageHeader;
         $users = User::orderBy('id', 'DESC')->paginate(10);
-        return view('backend.pages.users.index',compact('users','pageHeader'));
+        return view('backend.pages.users.index', compact('users', 'pageHeader'));
     }
 
     /**
@@ -56,11 +54,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        $this->checkOwnPermission('create');
+        $this->checkOwnPermission('user.create');
         $pageHeader = $this->pageHeader;
-
-        $roles = Role::all();
-        return view('backend.pages.users.create',compact('roles','pageHeader'));
+        $users = User::all();
+        return view('backend.pages.users.create', compact('users', 'pageHeader'));
     }
 
     /**
@@ -71,27 +68,33 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->checkOwnPermission('create');
+        $this->checkOwnPermission('user.create');
         $request->validate([
-            'name'=> 'required|max:50',
-            'email'=> 'required|unique:users',
+            'first_name' => 'required|max:50',
+            'last_name' => 'required|max:50',
+            'email' => 'required|unique:users',
             'phone' => 'required|max:11|min:11|regex:' . phoneNoRegex() . '|unique:' . with(new User)->getTable() . ',phone',
-            'password'=> 'required|min:8|confirmed',
-        ],[
-            'name.required' => 'Please Insert New User Name'
+        ], [
+            'first_name.required' => 'Please Insert First Name',
+            'last_name.required' => 'Please Insert Last Name'
         ]);
         $user = new User();
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        $user->password = Hash::make($request->password);
-        $user->save();
-        if ($request->roles) {
-            $user->assignRole($request->roles);
-        }
-        session()->flash('success','User has been created');
-        return redirect()->route('admin.users.index');
+        $user->address = $request->address;
+        $user->type = $request->type == true ? 'Agent':'Seeker';
+        $user->status = User::$statusArrays[0];
 
+        if (!empty($request->image)) {
+            $user->image = imageUpload($request->image, 'User');
+        }
+        if ($user->save()) {
+            return redirectRouteHelper($this->index_route);
+        } else {
+            return redirectRouteHelper();
+        }
     }
 
     /**
@@ -113,12 +116,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $this->checkOwnPermission('edit');
+        $this->checkOwnPermission('user.edit');
         $pageHeader = $this->pageHeader;
-
-        $user = User::find($id);
-        $roles = Role::all();
-        return view('backend.pages.users.edit',compact('user','roles','pageHeader'));
+        $users = User::find($id);
+        return view('backend.pages.users.edit', compact('users', 'pageHeader'));
     }
 
     /**
@@ -130,32 +131,59 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->checkOwnPermission('edit');
+        $this->checkOwnPermission('user.edit');
 
         $user = User::find($id);
         $request->validate([
-            'name'=> 'required|max:50',
-            'email'=> 'required|email|unique:users,email,'.$id,
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $id,
             'phone' => 'required|max:11|min:11|regex:' . phoneNoRegex() . '|unique:' . with(new User)->getTable() . ',phone,' . $id,
-            'password'=> 'nullable|min:8|confirmed',
-        ],[
-            'name.required' => 'Please Insert New User Name'
+        ], [
+            'name.required' => 'Please Insert First Name',
+            'last_name.required' => 'Please Insert Last Name'
         ]);
-        // $user = new User();
-        $user->name = $request->name;
+
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        if ($request->password !=null) {
-            $user->password = Hash::make($request->password);
-        }
-        $user->save();
-        $user->roles()->detach();
-        if ($request->roles) {
-            $user->assignRole($request->roles);
-        }
-        session()->flash('success','User has been updated');
-        return back();
+        $user->address = $request->address;
+        $user->type = $request->type == true ? 'Agent':'Seeker';
+        $user->status = User::$statusArrays[0];
 
+        if ($request->hasFile('image')) {
+            $path = 'images/' . $user->image;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+        }
+
+        if (!empty($request->image)) {
+            $user->image = imageUpload($request->image, 'User');
+        }
+
+        if ($user->save()) {
+            return redirectRouteHelper($this->index_route);
+        } else {
+            return redirectRouteHelper();
+        }
+    }
+
+    public function isActive($id)
+    {
+        $this->checkOwnPermission('user.edit');
+
+        $data = User::where('id', $id)->first();
+        if ($data->status == 'active') {
+            $status = "inactive";
+        } else {
+            $status = "active";
+        }
+        User::where('id', $id)->update([
+
+            'status' =>  $status
+        ]);
     }
 
     /**
@@ -166,14 +194,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $this->checkOwnPermission('delete');
-         $user = User::findById($id);
-         if (!is_null($user)) {
-             $user->delete();
-         }
-         session()->flash('success','User has been deleted');
-         return back();
-
+        $this->checkOwnPermission('user.delete');
+        $user = User::findById($id);
+        if (!is_null($user)) {
+            $user->delete();
+        }
+        session()->flash('success', 'User has been deleted');
+        return back();
     }
 }
-
