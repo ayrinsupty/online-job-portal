@@ -22,7 +22,7 @@
                                             <label for="basicInput">First Name</label>
                                             <input type="text" name="first_name"
                                                 class="form-control @error('first_name') is-invalid @enderror"
-                                                id="name" placeholder="Enter first name">
+                                                id="first_name" placeholder="Enter first name">
                                             @error('first_name')
                                                 <strong class="text-danger">{{ $errors->first('first_name') }}</strong>
                                             @enderror
@@ -33,10 +33,22 @@
                                         <div class="form-group">
                                             <label for="basicInput">Last Name</label>
                                             <input type="text" name="last_name"
-                                                class="form-control @error('last_name') is-invalid @enderror" id="name"
+                                                class="form-control @error('last_name') is-invalid @enderror" id="last_name"
                                                 placeholder="Enter last name">
                                             @error('last_name')
                                                 <strong class="text-danger">{{ $errors->first('last_name') }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="basicInput">Username</label>
+                                            <input type="text" name="username"
+                                                class="form-control @error('username') is-invalid @enderror" id="username"
+                                                placeholder="Enter username">
+                                            @error('username')
+                                                <strong class="text-danger">{{ $errors->first('username') }}</strong>
                                             @enderror
                                         </div>
                                     </div>
@@ -53,7 +65,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">Phone</label>
                                             <input type="phone" name="phone"
@@ -65,7 +77,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">Address</label>
                                             <input type="text" name="address"
@@ -77,18 +89,18 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">User Type</label>
-                                            <select name="type" required class="form-control" id="user_type">
+                                            <select name="type" required class="form-control" id="type">
                                                 <option value="">-- Choose Type --</option>
                                                 <option value="Agent">Agent</option>
                                                 <option value="Seeker">Seeker</option>
-                                            </select>
+                                              </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="basicInput">Image</label>
                                             <input type="file" name="image"

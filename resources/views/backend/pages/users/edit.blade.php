@@ -18,7 +18,7 @@
                                 @method('PUT')
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">First Name</label>
                                             <input type="text" name="first_name"
@@ -31,7 +31,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">Last Name</label>
                                             <input type="text" name="last_name"
@@ -44,7 +44,20 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="basicInput">Username</label>
+                                            <input type="text" name="username"
+                                                class="form-control  @error('last_name') is-invalid @enderror"
+                                                id="username" placeholder="Enter username"
+                                                value="{{ old('username', $users->username) }}">
+                                            @error('username')
+                                                <strong class="text-danger">{{ $errors->first('username') }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">Email</label>
                                             <input type="email" name="email"
@@ -56,7 +69,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">Phone</label>
                                             <input type="phone" name="phone"
@@ -68,7 +81,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">Address</label>
                                             <input type="text" name="address"
@@ -80,23 +93,18 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">User Type</label>
-                                            <select name="type" class="choices form-select multiple-remove"
-                                                multiple="multiple">
-
-                                                <option value="Agent"
-                                                    @if (old('type') == 'Agent') {{ 'selected' }} @endif>Agent
-                                                </option>
-                                                <option value="Seeker"
-                                                    @if (old('type') == 'Seeker') {{ 'selected' }} @endif>Seeker
-                                                </option>
+                                            <select name="type" required class="form-control" id="type">
+                                                <option value="">-- Choose Type --</option>
+                                                <option value="Agent">Agent</option>
+                                                <option value="Seeker">Seeker</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="basicInput">Image</label>
                                             <div class="row">

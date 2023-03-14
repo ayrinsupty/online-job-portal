@@ -72,19 +72,22 @@ class UserController extends Controller
         $request->validate([
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
+            'username' => 'required|max:50',
             'email' => 'required|unique:users',
             'phone' => 'required|max:11|min:11|regex:' . phoneNoRegex() . '|unique:' . with(new User)->getTable() . ',phone',
         ], [
             'first_name.required' => 'Please Insert First Name',
-            'last_name.required' => 'Please Insert Last Name'
+            'last_name.required' => 'Please Insert Last Name',
+            'username.required' => 'Please Insert Username'
         ]);
         $user = new User();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->address = $request->address;
-        $user->type = $request->type == true ? 'Agent':'Seeker';
+        $user->type = $request->type;
         $user->status = User::$statusArrays[0];
 
         if (!empty($request->image)) {
@@ -135,21 +138,24 @@ class UserController extends Controller
 
         $user = User::find($id);
         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name' => 'required|max:50',
+            'last_name' => 'required|max:50',
+            'username' => 'required|max:50',
             'email' => 'required|email|unique:users,email,' . $id,
             'phone' => 'required|max:11|min:11|regex:' . phoneNoRegex() . '|unique:' . with(new User)->getTable() . ',phone,' . $id,
         ], [
             'name.required' => 'Please Insert First Name',
-            'last_name.required' => 'Please Insert Last Name'
+            'last_name.required' => 'Please Insert Last Name',
+            'username.required' => 'Please Insert Username'
         ]);
 
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->address = $request->address;
-        $user->type = $request->type == true ? 'Agent':'Seeker';
+        $user->type = $request->type;
         $user->status = User::$statusArrays[0];
 
         if ($request->hasFile('image')) {
@@ -195,11 +201,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         $this->checkOwnPermission('user.delete');
-        $user = User::findById($id);
-        if (!is_null($user)) {
-            $user->delete();
+        $deleteData = User::find($id);
+        if (!is_null($deleteData)) {
+            if ($deleteData->delete()) {
+                return response()->json(['status' => 200,]);
+            } else {
+                return response()->json(['status' => 422,]);
+            }
         }
-        session()->flash('success', 'User has been deleted');
-        return back();
     }
 }

@@ -23,11 +23,11 @@ class UserSeeder extends Seeder
         if (is_null($admin)) {
             $admin = new Admin();
             $admin->name = "Ayrin Supty";
-            $admin->email = "ayrinsupty@hotmail.com";
-            $admin->phone = "01615336546";
+            $admin->slug = "Supty";
             $admin->username = "supty";
+            $admin->phone = "01615336546";
+            $admin->email = "ayrinsupty@hotmail.com";
             $admin->password = Hash::make('12345678');
-            $admin->image = $faker->imageUrl;
             $admin->status = Admin::$statusArrays[0];;
             $admin->save();
         }
@@ -38,16 +38,18 @@ class UserSeeder extends Seeder
             $user = new User();
             if (is_null($user)) {
                 $user->first_name = "Ayrin";
-                $user->last_name = "supty";
+                $user->last_name = "Supty";
+                $user->username = "supty";
                 $user->email =  "ayrinsupty@hotmail.com";
             } else {
-                $user->first_name = $faker->firstName;
-                $user->last_name = $faker->lastName;
+                $user->first_name = $faker->name;
+                $user->last_name = $faker->name;
+                $user->username = $faker->userName;
                 $user->email = $faker->email;
             }
             $user->phone = $faker->phoneNumber;
-            $user->image = $faker->imageUrl;
             $user->address = "Dhaka";
+            $user->image = $faker->imageUrl;
             $user->save();
         }
     }
