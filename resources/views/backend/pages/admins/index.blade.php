@@ -58,9 +58,9 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4"></td>
-                                    <td colspan="6">No Data Found! <a class="btn btn-info"
-                                            href="{{ route('admin.admins.create') }}">Create
+                                    <td colspan="2"></td>
+                                    <td colspan="6">No Data Found! <a class="btn btn-outline-info"
+                                            href="{{ $pageHeader['create_route'] }}">Create
                                             {{ $pageHeader['singular_name'] }}</a>
                                     </td>
                                     <td colspan="2"></td>

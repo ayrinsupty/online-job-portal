@@ -34,14 +34,14 @@
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
-                            <span>Admin's</span>
+                            <span>Admins</span>
                         </a>
                         <ul class="submenu"
                             {{ Route::is('admin.admins.create') || Route::is('admin.admins.edit') || Route::is('admin.admins.index') ? 'style=display:block;' : '' }}>
                             <li class="submenu-item ">
                                 @if ($userGuard->can('admin.view'))
                                     <a {{ Route::is('admin.admins.edit') || Route::is('admin.admins.index') ? 'style=color:#435ebe;' : '' }}
-                                        href="{{ route('admin.admins.index') }}">Admin's</a>
+                                        href="{{ route('admin.admins.index') }}">Admins</a>
                                 @endif
                                 @if ($userGuard->can('admin.create'))
                                     <a {{ Route::is('admin.admins.create') ? 'style=color:#435ebe;' : '' }}
@@ -52,6 +52,32 @@
                     </li>
                 @endif
 
+                {{-- Company --}}
+                @if (
+                    $userGuard->can('company.view') ||
+                        $userGuard->can('company.create') ||
+                        $userGuard->can('company.edit') ||
+                        $userGuard->can('company.delete'))
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Companies</span>
+                        </a>
+                        <ul class="submenu"
+                            {{ Route::is('admin.companies.create') || Route::is('admin.companies.edit') || Route::is('admin.companies.index') ? 'style=display:block;' : '' }}>
+                            <li class="submenu-item ">
+                                @if ($userGuard->can('company.view'))
+                                    <a {{ Route::is('admin.companies.edit') || Route::is('admin.companies.index') ? 'style=color:#435ebe;' : '' }}
+                                        href="{{ route('admin.companies.index') }}">Companies</a>
+                                @endif
+                                @if ($userGuard->can('company.create'))
+                                    <a {{ Route::is('admin.companies.create') ? 'style=color:#435ebe;' : '' }}
+                                        href="{{ route('admin.companies.create') }}">Create Company</a>
+                                @endif
+                            </li>
+                        </ul>
+                    </li>
+                @endif
 
                 {{-- Role --}}
                 @if (

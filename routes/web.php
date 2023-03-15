@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Backend\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Backend\CompanyController;
 use App\Http\Controllers\Backend\UserController;
 
 /*
@@ -20,36 +21,50 @@ use App\Http\Controllers\Backend\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/storage-shortcut', function () {
     Artisan::call('storage:link');
 });
 
-// Route::get('/', function () {
-//     return view('home');
-// });
+/*
+|--------------------------------------------------------------------------
+| Authentication Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('/login/submit', [AuthenticatedSessionController::class, 'store'])->name('login.submit');
+    Route::post('/logout/submit', [AuthenticatedSessionController::class, 'destroy'])->name('logout.submit');
 
+    Route::get('/password/reset', [PasswordResetLinkController::class, 'create'])->name('password');
+    Route::post('/password/reset/submit', [PasswordResetLinkController::class, 'destroy'])->name('password.submit');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Frontend Routes
+|--------------------------------------------------------------------------
+*/
 Route::get('/', [PageController::class, 'home'])->name('home');
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
-Route::get('/login',[AuthenticatedSessionController::class,'create'])->name('login');
-Route::post('/login/submit',[AuthenticatedSessionController::class,'store'])->name('login.submit');
-Route::post('/logout/submit',[AuthenticatedSessionController::class,'destroy'])->name('logout.submit');
-
-Route::get('/password/reset',[PasswordResetLinkController::class,'create'])->name('password');
-Route::post('/password/reset/submit',[PasswordResetLinkController::class,'destroy'])->name('password.submit');
-});
+/*
+|--------------------------------------------------------------------------
+| Backend Routes
+|--------------------------------------------------------------------------
+*/
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
-
-Route::get('/',[DashboardController::class,'index'])->name('home');
-Route::resource('roles', RolesController::class,['names'=>'roles']);
-Route::resource('admins', AdminController::class,['names'=>'admins']);
-Route::get('admins/status/{slug}', [AdminController::class, 'isActive'])->name('admins.status');
-Route::resource('users', UserController::class,['names'=>'users']);
-Route::get('users/status/{slug}', [UserController::class, 'isActive'])->name('users.status');
-
+    Route::get('/', [DashboardController::class, 'index'])->name('home');
+    Route::resource('roles', RolesController::class, ['names' => 'roles']);
+    Route::resource('admins', AdminController::class, ['names' => 'admins']);
+    Route::get('admins/status/{slug}', [AdminController::class, 'isActive'])->name('admins.status');
+    Route::resource('users', UserController::class, ['names' => 'users']);
+    Route::get('users/status/{slug}', [UserController::class, 'isActive'])->name('users.status');
+    Route::resource('companies', CompanyController::class, ['names' => 'companies']);
+    Route::get('companies/status/{slug}', [CompanyController::class, 'isActive'])->name('companies.status');
 });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="{{ route('admin.admins.store') }}" method="POST">
+                            <form action="{{ $pageHeader['store_route'] }}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">

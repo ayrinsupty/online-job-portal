@@ -23,7 +23,6 @@ class UserSeeder extends Seeder
         if (is_null($admin)) {
             $admin = new Admin();
             $admin->name = "Ayrin Supty";
-            $admin->slug = "Supty";
             $admin->username = "supty";
             $admin->phone = "01615336546";
             $admin->email = "ayrinsupty@hotmail.com";

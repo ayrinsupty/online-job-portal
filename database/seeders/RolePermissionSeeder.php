@@ -43,6 +43,17 @@ class RolePermissionSeeder extends Seeder
                 ]
             ],
             [
+                'group_name' => 'company',
+                'permissions' => [
+                    // Company Permissions
+                    'company.create',
+                    'company.view',
+                    'company.edit',
+                    'company.delete',
+                    'company.approve',
+                ]
+            ],
+            [
                 'group_name' => 'role',
                 'permissions' => [
                     // Role Permissions

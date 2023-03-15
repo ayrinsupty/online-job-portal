@@ -16,7 +16,6 @@ class User extends Model
         'last_name',
         'username',
         'email',
-        'email_verified_at',
         'address',
         'phone',
         'image',
@@ -25,7 +24,4 @@ class User extends Model
 
     public static $statusArrays = ['active', 'deactive'];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 }
