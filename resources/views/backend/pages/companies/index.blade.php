@@ -48,7 +48,8 @@
                                     @endif
                                     <td>
                                         @if (Auth::guard('admin')->user()->can('company.edit'))
-                                            <a class="badge bg-info" href="{{ route('admin.companies.edit', $company->id) }}"><i
+                                            <a class="badge bg-info"
+                                                href="{{ route('admin.companies.edit', $company->id) }}"><i
                                                     class="fas fa-edit"></i></a>
                                         @endif
                                         @if (Auth::guard('admin')->user()->can('admin.delete'))
@@ -56,7 +57,6 @@
                                                 onclick="dataDelete({{ $company->id }},'{{ $pageHeader['base_url'] }}')"><i
                                                     class="fas fa-trash"></i></a>
                                         @endif
-                                    </td>
                                     </td>
                                 </tr>
                             @empty

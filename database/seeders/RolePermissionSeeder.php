@@ -65,6 +65,16 @@ class RolePermissionSeeder extends Seeder
                 ]
             ],
             [
+                'group_name' => 'seekerEducation',
+                'permissions' => [
+                    // Seeker Education Permissions
+                    'seekerEducation.create',
+                    'seekerEducation.view',
+                    'seekerEducation.edit',
+                    'seekerEducation.delete',
+                ]
+            ],
+            [
                 'group_name' => 'user',
                 'permissions' => [
                     // User Permissions
