@@ -75,6 +75,16 @@ class RolePermissionSeeder extends Seeder
                 ]
             ],
             [
+                'group_name' => 'seekerExperience',
+                'permissions' => [
+                    // Seeker Experience Permissions
+                    'seekerExperience.create',
+                    'seekerExperience.view',
+                    'seekerExperience.edit',
+                    'seekerExperience.delete',
+                ]
+            ],
+            [
                 'group_name' => 'user',
                 'permissions' => [
                     // User Permissions

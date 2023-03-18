@@ -31,7 +31,7 @@
                         $userGuard->can('admin.create') ||
                         $userGuard->can('admin.edit') ||
                         $userGuard->can('admin.delete'))
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Admins</span>
@@ -58,7 +58,7 @@
                         $userGuard->can('company.create') ||
                         $userGuard->can('company.edit') ||
                         $userGuard->can('company.delete'))
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Companies</span>
@@ -85,7 +85,7 @@
                         $userGuard->can('role.create') ||
                         $userGuard->can('role.edit') ||
                         $userGuard->can('role.delete'))
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Role's</span>
@@ -112,7 +112,7 @@
                         $userGuard->can('seekerEducation.create') ||
                         $userGuard->can('seekerEducation.edit') ||
                         $userGuard->can('seekerEducation.delete'))
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Seeker's Education</span>
@@ -133,13 +133,40 @@
                     </li>
                 @endif
 
+                {{-- Seeker Experience --}}
+                @if (
+                    $userGuard->can('seekerExperience.view') ||
+                        $userGuard->can('seekerExperience.create') ||
+                        $userGuard->can('seekerExperience.edit') ||
+                        $userGuard->can('seekerExperience.delete'))
+                    <li class="sidebar-item has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Seeker Experiences</span>
+                        </a>
+                        <ul class="submenu"
+                            {{ Route::is('admin.seekerExperiences.create') || Route::is('admin.seekerExperiences.edit') || Route::is('admin.seekerExperiences.index') ? 'style=display:block;' : '' }}>
+                            <li class="submenu-item ">
+                                @if ($userGuard->can('seekerExperience.view'))
+                                    <a {{ Route::is('admin.seekerExperiences.edit') || Route::is('admin.seekerExperiences.index') ? 'style=color:#435ebe;' : '' }}
+                                        href="{{ route('admin.companies.index') }}">Seeker Experiences</a>
+                                @endif
+                                @if ($userGuard->can('seekerExperience.create'))
+                                    <a {{ Route::is('admin.seekerExperiences.create') ? 'style=color:#435ebe;' : '' }}
+                                        href="{{ route('admin.seekerExperiences.create') }}">Create Seeker Experience</a>
+                                @endif
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
                 {{-- User --}}
                 @if (
                     $userGuard->can('user.view') ||
                         $userGuard->can('user.create') ||
                         $userGuard->can('user.edit') ||
                         $userGuard->can('user.delete'))
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>User's</span>
