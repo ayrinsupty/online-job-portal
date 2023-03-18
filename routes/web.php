@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Backend\CompanyController;
 use App\Http\Controllers\Backend\SeekerEducationController;
 use App\Http\Controllers\Backend\SeekerExperienceController;
+use App\Http\Controllers\Backend\SeekerReferenceController;
 use App\Http\Controllers\Backend\UserController;
 
 /*
@@ -65,6 +66,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth:admin
     Route::get('companies/status/{slug}', [CompanyController::class, 'isActive'])->name('companies.status');
     Route::resource('seekerEducations', SeekerEducationController::class, ['names' => 'seekerEducations']);
     Route::resource('seekerExperiences', SeekerExperienceController::class, ['names' => 'seekerExperiences']);
+    Route::resource('seekerReferences', SeekerReferenceController::class, ['names' => 'seekerReferences']);
 });
 
 Route::get('/dashboard', function () {

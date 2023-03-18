@@ -34,14 +34,14 @@
                     <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
-                            <span>Admins</span>
+                            <span>Admin's</span>
                         </a>
                         <ul class="submenu"
                             {{ Route::is('admin.admins.create') || Route::is('admin.admins.edit') || Route::is('admin.admins.index') ? 'style=display:block;' : '' }}>
                             <li class="submenu-item ">
                                 @if ($userGuard->can('admin.view'))
                                     <a {{ Route::is('admin.admins.edit') || Route::is('admin.admins.index') ? 'style=color:#435ebe;' : '' }}
-                                        href="{{ route('admin.admins.index') }}">Admins</a>
+                                        href="{{ route('admin.admins.index') }}">Admin's</a>
                                 @endif
                                 @if ($userGuard->can('admin.create'))
                                     <a {{ Route::is('admin.admins.create') ? 'style=color:#435ebe;' : '' }}
@@ -61,14 +61,14 @@
                     <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
-                            <span>Companies</span>
+                            <span>Companie's</span>
                         </a>
                         <ul class="submenu"
                             {{ Route::is('admin.companies.create') || Route::is('admin.companies.edit') || Route::is('admin.companies.index') ? 'style=display:block;' : '' }}>
                             <li class="submenu-item ">
                                 @if ($userGuard->can('company.view'))
                                     <a {{ Route::is('admin.companies.edit') || Route::is('admin.companies.index') ? 'style=color:#435ebe;' : '' }}
-                                        href="{{ route('admin.companies.index') }}">Companies</a>
+                                        href="{{ route('admin.companies.index') }}">Companie's</a>
                                 @endif
                                 @if ($userGuard->can('company.create'))
                                     <a {{ Route::is('admin.companies.create') ? 'style=color:#435ebe;' : '' }}
@@ -142,18 +142,45 @@
                     <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
-                            <span>Seeker Experiences</span>
+                            <span>Seeker's Experiences</span>
                         </a>
                         <ul class="submenu"
                             {{ Route::is('admin.seekerExperiences.create') || Route::is('admin.seekerExperiences.edit') || Route::is('admin.seekerExperiences.index') ? 'style=display:block;' : '' }}>
                             <li class="submenu-item ">
                                 @if ($userGuard->can('seekerExperience.view'))
                                     <a {{ Route::is('admin.seekerExperiences.edit') || Route::is('admin.seekerExperiences.index') ? 'style=color:#435ebe;' : '' }}
-                                        href="{{ route('admin.companies.index') }}">Seeker Experiences</a>
+                                        href="{{ route('admin.seekerExperiences.index') }}">Seeker's Experiences</a>
                                 @endif
                                 @if ($userGuard->can('seekerExperience.create'))
                                     <a {{ Route::is('admin.seekerExperiences.create') ? 'style=color:#435ebe;' : '' }}
-                                        href="{{ route('admin.seekerExperiences.create') }}">Create Seeker Experience</a>
+                                        href="{{ route('admin.seekerExperiences.create') }}">Create Seeker's Experience</a>
+                                @endif
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
+                {{-- Seeker References --}}
+                @if (
+                    $userGuard->can('seekerReference.view') ||
+                        $userGuard->can('seekerReference.create') ||
+                        $userGuard->can('seekerReference.edit') ||
+                        $userGuard->can('seekerReference.delete'))
+                    <li class="sidebar-item has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Seeker's References</span>
+                        </a>
+                        <ul class="submenu"
+                            {{ Route::is('admin.seekerReferences.create') || Route::is('admin.seekerReferences.edit') || Route::is('admin.seekerReferences.index') ? 'style=display:block;' : '' }}>
+                            <li class="submenu-item ">
+                                @if ($userGuard->can('seekerReference.view'))
+                                    <a {{ Route::is('admin.seekerReferences.edit') || Route::is('admin.seekerReferences.index') ? 'style=color:#435ebe;' : '' }}
+                                        href="{{ route('admin.seekerReferences.index') }}">Seeker's References</a>
+                                @endif
+                                @if ($userGuard->can('seekerReference.create'))
+                                    <a {{ Route::is('admin.seekerReferences.create') ? 'style=color:#435ebe;' : '' }}
+                                        href="{{ route('admin.seekerReferences.create') }}">Create Seeker's Reference</a>
                                 @endif
                             </li>
                         </ul>

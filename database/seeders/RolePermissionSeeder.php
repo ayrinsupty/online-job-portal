@@ -85,6 +85,16 @@ class RolePermissionSeeder extends Seeder
                 ]
             ],
             [
+                'group_name' => 'seekerReference',
+                'permissions' => [
+                    // Seeker Reference Permissions
+                    'seekerReference.create',
+                    'seekerReference.view',
+                    'seekerReference.edit',
+                    'seekerReference.delete',
+                ]
+            ],
+            [
                 'group_name' => 'user',
                 'permissions' => [
                     // User Permissions
