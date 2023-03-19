@@ -160,6 +160,33 @@
                     </li>
                 @endif
 
+                {{-- Seeker Experts --}}
+                @if (
+                    $userGuard->can('seekerExpert.view') ||
+                        $userGuard->can('seekerExpert.create') ||
+                        $userGuard->can('seekerExpert.edit') ||
+                        $userGuard->can('seekerExpert.delete'))
+                    <li class="sidebar-item has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Seeker's Experts</span>
+                        </a>
+                        <ul class="submenu"
+                            {{ Route::is('admin.seekerExperts.create') || Route::is('admin.seekerExperts.edit') || Route::is('admin.seekerExperts.index') ? 'style=display:block;' : '' }}>
+                            <li class="submenu-item ">
+                                @if ($userGuard->can('seekerExpert.view'))
+                                    <a {{ Route::is('admin.seekerExperts.edit') || Route::is('admin.seekerExperts.index') ? 'style=color:#435ebe;' : '' }}
+                                        href="{{ route('admin.seekerExperts.index') }}">Seeker's Experts</a>
+                                @endif
+                                @if ($userGuard->can('seekerExpert.create'))
+                                    <a {{ Route::is('admin.seekerExperts.create') ? 'style=color:#435ebe;' : '' }}
+                                        href="{{ route('admin.seekerExperts.create') }}">Create Seeker's Experts</a>
+                                @endif
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
                 {{-- Seeker References --}}
                 @if (
                     $userGuard->can('seekerReference.view') ||

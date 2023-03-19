@@ -85,6 +85,16 @@ class RolePermissionSeeder extends Seeder
                 ]
             ],
             [
+                'group_name' => 'seekerExpert',
+                'permissions' => [
+                    // Seeker Expert Permissions
+                    'seekerExpert.create',
+                    'seekerExpert.view',
+                    'seekerExpert.edit',
+                    'seekerExpert.delete',
+                ]
+            ],
+            [
                 'group_name' => 'seekerReference',
                 'permissions' => [
                     // Seeker Reference Permissions
