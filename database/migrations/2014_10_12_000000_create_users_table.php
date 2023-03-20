@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->text('address');
+            $table->string('password');
             $table->string('image')->nullable();
             $table->string('type')->default('Seeker');
             $table->string('status')->default('inactive');

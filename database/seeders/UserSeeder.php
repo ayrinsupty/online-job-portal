@@ -33,19 +33,22 @@ class UserSeeder extends Seeder
 
 
         foreach (range(1, 5) as $key => $index) {
-            $user = User::where('email', 'ayrinsupty@hotmail.com')->first();
+            $users = User::where('email', 'ayrinsupty@hotmail.com')->first();
             $user = new User();
-            if (is_null($user)) {
+            if (is_null($users)) {
                 $user->first_name = "Ayrin";
                 $user->last_name = "Supty";
                 $user->username = "supty";
                 $user->email =  "ayrinsupty@hotmail.com";
+
             } else {
                 $user->first_name = $faker->name;
                 $user->last_name = $faker->name;
                 $user->username = $faker->userName;
                 $user->email = $faker->email;
+
             }
+                $user->password = Hash::make('12345678');
             $user->phone = $faker->phoneNumber;
             $user->address = "Dhaka";
             $user->image = $faker->imageUrl;
