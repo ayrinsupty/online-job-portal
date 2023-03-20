@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class SeekerReference extends Model
 {
     use HasFactory;
+
     protected $table = 'seeker_references';
     protected $fillable = [
         'user_id',
-        'company_name',
-        'designation',
-        'from_date',
-        'to_date',
+        'name',
+        'phone',
+        'occupation',
+        'designation'
     ];
 }

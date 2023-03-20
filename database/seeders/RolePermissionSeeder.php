@@ -17,8 +17,8 @@ class RolePermissionSeeder extends Seeder
     public function run()
     {
         // Create Roles
-        $roleSuperAdmin = Role::create(['name' => 'Super Admin','guard_name' => 'admin']);
-        $roleAdmin = Role::create(['name' => 'Admin','guard_name' => 'admin']);
+        $roleSuperAdmin = Role::create(['name' => 'Super Admin','guard_name' => 'web']);
+        $roleAdmin = Role::create(['name' => 'Admin','guard_name' => 'web']);
 
 
         // Permission List as array
@@ -126,7 +126,7 @@ class RolePermissionSeeder extends Seeder
                 // Create Permission
                 $permission = Permission::create([
                     'name' => $permissions[$i]['permissions'][$j], 'group_name' => $permissionGroup,
-                    'guard_name' => 'admin'
+                    'guard_name' => 'web'
                 ]);
                 $roleSuperAdmin->givePermissionTo($permission);
                 $permission->assignRole($roleSuperAdmin);
@@ -137,7 +137,7 @@ class RolePermissionSeeder extends Seeder
         //here role_id =superadmin model_id=customer_id
         DB::table('model_has_roles')->insert([
             'role_id' => 1,
-            'model_type' => 'App\Models\Admin',
+            'model_type' => 'App\Models\User',
             'model_id' => 1
 
         ]);

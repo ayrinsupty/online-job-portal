@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeekerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Backend\AdminController;
@@ -56,7 +57,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 | Backend Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth:web'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('home');
     Route::resource('roles', RolesController::class, ['names' => 'roles']);
     Route::resource('admins', AdminController::class, ['names' => 'admins']);
@@ -70,7 +71,15 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth:admin
     Route::resource('seekerReferences', SeekerReferenceController::class, ['names' => 'seekerReferences']);
     Route::resource('seekerExperts', SeekerExpertController::class, ['names' => 'seekerExperts']);
 });
-
+Route::post('seeker/education',[SeekerController::class,'addEducation'])->name('add.education');
+Route::get('seeker/education/delete/{id}',[SeekerController::class,'deleteEducation'])->name('delete.education');
+Route::post('seeker/skill',[SeekerController::class,'addSkill'])->name('add.skill');
+Route::get('seeker/skill/delete/{id}',[SeekerController::class,'deleteSkill'])->name('delete.skill');
+Route::post('seeker/ref',[SeekerController::class,'addReference'])->name('add.reference');
+Route::get('seeker/ref/delete/{id}',[SeekerController::class,'deleteReference'])->name('delete.reference');
+Route::post('seeker/experience',[SeekerController::class,'addExperience'])->name('add.experience');
+Route::get('seeker/experience/delte/{id}',[SeekerController::class,'deleteExperience'])->name('delete.experience');
+Route::post('user/update',[SeekerController::class,'updateUser'])->name('update.user');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

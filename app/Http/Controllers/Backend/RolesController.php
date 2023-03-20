@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -12,10 +12,6 @@ class RolesController extends Controller
 {
     public $user;
     public $pageHeader;
-    public $show_fields;
-    public $insert_fields;
-    public $update_fields;
-    public $except_column;
     public $index_route = "admin.roles.index";
     public $create_route = "admin.roles.create";
     public $store_route = "admin.roles.store";
@@ -59,7 +55,7 @@ class RolesController extends Controller
         $this->checkOwnPermission('role.create');
         $pageHeader = $this->pageHeader;
 
-        $permission_groups=Admin::getpermissionGroups();
+        $permission_groups=User::getpermissionGroups();
         $permissions = Permission::all();
         return view('backend.pages.roles.create',compact('permissions','permission_groups','pageHeader'));
     }
@@ -78,7 +74,7 @@ class RolesController extends Controller
         ],[
             'name.required' => 'Please Insert New Role Name'
         ]);
-        $role = Role::create(['name' => $request->name, 'guard_name' => 'admin']);
+        $role = Role::create(['name' => $request->name, 'guard_name' => 'web']);
         $permissions = $request->permissions;
         if ($role) {
             if (!empty($permissions)) {
@@ -110,8 +106,8 @@ class RolesController extends Controller
         $this->checkOwnPermission('role.edit');
         $pageHeader = $this->pageHeader;
 
-        $role = Role::findById($id,'admin');
-        $permission_groups=Admin::getpermissionGroups();
+        $role = Role::findById($id,'web');
+        $permission_groups=User::getpermissionGroups();
         $permissions = Permission::all();
         return view('backend.pages.roles.edit',compact('role','permissions','permission_groups','pageHeader'));
     }
@@ -132,7 +128,7 @@ class RolesController extends Controller
             'name.required' => 'Please Insert New Role Name'
         ]);
         // $role = Role::create(['name' => $request->name]);
-        $role = Role::findById($id,'admin');
+        $role = Role::findById($id,'web');
         $permissions = $request->permissions;
         if ($role) {
             if (!empty($permissions)) {

@@ -19,3 +19,4 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
 
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/theme-dark.css') }}">
+<link rel="stylesheet" href="{{ asset('backend/assets/vendors/fontawesome/all.min.css') }}">

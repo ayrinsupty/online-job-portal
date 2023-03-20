@@ -21,8 +21,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        if (Auth::guard('admin')->check() == 'true') {
-            return redirect('/admin');
+        if (Auth::guard('web')->check() == 'true') {
+            return redirect('/');
         }
         return view('backend.auth.login');
     }
@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             session()->flash('success', 'Logged in successfully!');
             return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
         } else {
@@ -53,12 +53,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::guard('admin')->logout();
+        Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('/admin/login');
+        return redirect('/login');
     }
 }

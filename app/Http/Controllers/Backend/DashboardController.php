@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            $this->user = Auth::guard('admin')->user();
+            $this->user = Auth::guard('web')->user();
             return $next($request);
         });
         $this->pageHeader = [
@@ -29,8 +29,8 @@ class DashboardController extends Controller
 
     public function index()
     {
-        if(Auth::guard('admin')->check()!='true'){
-            return redirect('admin/login');
+        if(Auth::guard('web')->check()!='true'){
+            return redirect('/login');
         }
         $pageHeader = $this->pageHeader;
 
