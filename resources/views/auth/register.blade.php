@@ -32,30 +32,91 @@
                     <span>Already have an account?</span>
                     <a href="{{ route('login') }}">Sign In</a>
                 </div>
-                <form>
+                <form method="post" action="{{ route('register') }}">
+                    @csrf
                     <div class="row align-items-center">
-                        <div class="col-lg-4">
-                            <div class="create-photo-item">
-                                <div class="create-photo-left">
-                                    <div class="d-table">
-                                        <div class="d-table-cell">
-                                            <div class="form-group">
-                                                <i class="icofont-photobucket"></i>
-                                                <input type="file" class="form-control-file" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="col-lg-4">--}}
+{{--                            <div class="create-photo-item">--}}
+{{--                                <div class="create-photo-left">--}}
+{{--                                    <div class="d-table">--}}
+{{--                                        <div class="d-table-cell">--}}
+{{--                                            <div class="form-group">--}}
+{{--                                                <i class="icofont-photobucket"></i>--}}
+{{--                                                <input name="image" type="file" class="form-control-file" />--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="col-lg-8">
                             <div class="create-photo-item">
                                 <div class="create-photo-right">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Your Name Here" />
+                                        <input type="text"
+                                               class="form-control  @error('first_name') is-invalid @enderror"
+                                                name="first_name"
+                                               placeholder="Your Name Here"/>
+                                        @error('first_name')
+                                        <strong class="text-danger">{{ $errors->first('first_name') }}</strong>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Profession" />
+                                        <input type="text"  name="last_name"
+                                               class="form-control  @error('last_name') is-invalid @enderror"
+                                               placeholder="Profession"/>
+                                        @error('last_name')
+                                        <strong class="text-danger">{{ $errors->first('last_name') }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text"  name="phone"
+                                               class="form-control  @error('phone') is-invalid @enderror"
+                                               placeholder="Profession"/>
+                                        @error('phone')
+                                        <strong class="text-danger">{{ $errors->first('phone') }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="address"
+                                               class="form-control  @error('address') is-invalid @enderror"
+                                               placeholder="Profession"/>
+                                        @error('address')
+                                        <strong class="text-danger">{{ $errors->first('address') }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="email"
+                                               class="form-control  @error('email') is-invalid @enderror"
+                                               placeholder="Profession"/>
+                                        @error('email')
+                                        <strong class="text-danger">{{ $errors->first('email') }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password"
+                                               class="form-control  @error('password') is-invalid @enderror"
+                                               placeholder="Profession"/>
+                                        @error('password')
+                                        <strong class="text-danger">{{ $errors->first('password') }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password_confirmation"
+                                               class="form-control  @error('password_confirmation') is-invalid @enderror"
+                                               placeholder="Profession"/>
+                                        @error('password_confirmation')
+                                        <strong class="text-danger">{{ $errors->first('password_confirmation') }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <select name="type" class="form-control  @error('password') is-invalid @enderror" id="" required>
+                                            <option value="Seeker">Seeker</option>
+                                            <option value="Agent">Agent</option>
+                                        </select>
+                                        @error('type')
+                                        <strong class="text-danger">{{ $errors->first('type') }}</strong>
+                                        @enderror
                                     </div>
                                     <div class="text-right">
                                         <button type="submit" class="btn create-photo-btn">
@@ -67,179 +128,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="create-information">
-                <form>
-                    <h3>Basic Information</h3>
-                    <div class="create-information-btn">
-                        <a href="#">Upload Cover Photo</a>
-                        <a href="#">Upload Your CV</a>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Your Name</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Your Email</label>
-                                <input type="email" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Date of Birth</label>
-                                <input type="date" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Your Phone</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Job Title</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Address:</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <div class="gender-area">
-                                    <span>Gender</span>
-                                    <input type="radio" name="gender" id="male" value="male" checked />
-                                    <label for="male">Male</label>
-                                    <input type="radio" name="gender" id="female" value="female" />
-                                    <label for="female">Female</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea id="your_message" class="form-control" rows="8"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="create-education">
-                <div class="create-education-wrap">
-                    <div class="create-education-left">
-                        <h3>Education</h3>
-                    </div>
-                    <div class="create-education-right">
-                        <a href="#">Add Education</a>
-                    </div>
-                </div>
-                <form>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Degree</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Institute</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Year</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="create-skills">
-                <div class="create-skills-wrap">
-                    <div class="create-skills-left">
-                        <h3>Skill</h3>
-                    </div>
-                    <div class="create-skills-right">
-                        <a href="#">Edit</a>
-                        <a href="#">Add Skill</a>
-                    </div>
-                </div>
-                <form>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="skill">
-                                <p>Percentage</p>
-                                <div class="skill-bar skill1 wow slideInLeft animated">
-                                    <span class="skill-count1">70%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="create-skills">
-                <div class="create-skills-wrap">
-                    <div class="create-skills-left">
-                        <h3>Social Links</h3>
-                    </div>
-                    <div class="create-skills-right">
-                        <a href="#">Edit</a>
-                        <a href="#">Add New</a>
-                    </div>
-                </div>
-                <form>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Facebook</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Instagram</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Linedin</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Dribbble</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="text-left">
-                <button type="submit" class="btn create-ac-btn">Save</button>
             </div>
         </div>
     </div>

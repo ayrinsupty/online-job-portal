@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->string('type')->default('Seeker');
-            $table->string('status')->default('inactive');
+            $table->string('status')->default('active');
             $table->rememberToken();
             $table->timestamps();
         });
