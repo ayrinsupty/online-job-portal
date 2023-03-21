@@ -34,23 +34,25 @@ class RegisteredUserController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'username' => ['nullable', 'string', 'max:255'],
-            'phone' => ['required','max:11'],
+            'phone' => ['required', 'max:11'],
             'address' => ['required', 'string', 'max:255'],
             'type' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'type' => $request->type,
-            'password' => Hash::make($request->password),
-        ]);
+        $user = new User();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->type = $request->type;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        $user->assignRole($request->type);
+
 
         event(new Registered($user));
 

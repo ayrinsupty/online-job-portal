@@ -121,7 +121,7 @@
                     <ul class="navbar-nav">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link dropdown-toggle">{{ Auth::user()->full_name }} <i
+                                <a class="nav-link dropdown-toggle">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <i
                                         class="icofont-simple-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
@@ -133,6 +133,12 @@
                                                 Logout
                                             </x-dropdown-link>
                                         </form>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="login-btn" href="{{ route('dashboard') }}">
+                                            <i class="icofont-plus-square"></i>
+                                            Profile Setting
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
