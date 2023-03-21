@@ -17,11 +17,6 @@ class PageController extends Controller
         return view('auth.candidate-login');
     }
 
-    public function agentLogin()
-    {
-        return view('auth.agent-login');
-    }
-
     public function employerLogin()
     {
         return view('auth.employer-login');
@@ -31,30 +26,9 @@ class PageController extends Controller
     {
         return view('auth.candidate-register');
     }
-
-    public function agentRegister()
-    {
-        return view('auth.agent-register');
-    }
-
+    
     public function employerRegister()
     {
         return view('auth.employer-register');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

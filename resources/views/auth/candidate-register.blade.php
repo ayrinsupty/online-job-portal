@@ -32,7 +32,8 @@
                     <span>Already have an account?</span>
                     <a href="{{ route('candidateLogin') }}">Sign In</a>
                 </div>
-                <form>
+                <form method="POST" action="{{ route('candidate.store') }}" enctype="multipart/form-data">
+                    @csrf
                     <div class="row align-items-center">
                         <div class="col-lg-4">
                             <div class="create-photo-item">
@@ -41,7 +42,7 @@
                                         <div class="d-table-cell">
                                             <div class="form-group">
                                                 <i class="icofont-photobucket"></i>
-                                                <input type="file" class="form-control-file" />
+                                                <input type="file" name="image" class="form-control-file" />
                                             </div>
                                         </div>
                                     </div>
@@ -52,194 +53,74 @@
                             <div class="create-photo-item">
                                 <div class="create-photo-right">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Your Name Here" />
+                                        <input type="text" name="first_name" class="form-control"
+                                            placeholder="Your first Name Here" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Profession" />
+                                        <input type="text" name="last_name" class="form-control"
+                                            placeholder="Your Last Name Here" />
                                     </div>
-                                    <div class="text-right">
-                                        <button type="submit" class="btn create-photo-btn">
-                                            Done
-                                        </button>
+                                    <div class="form-group">
+                                        <input type="text" name="username" class="form-control"
+                                            placeholder="Your Username Here" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="create-information">
-                <form>
-                    <h3>Basic Information</h3>
-                    <div class="create-information-btn">
-                        <a href="#">Upload Cover Photo</a>
-                        <a href="#">Upload Your CV</a>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Your Name</label>
-                                <input type="text" class="form-control" />
-                            </div>
+                    <div class="create-information">
+                        <h3>Basic Information</h3>
+                        <div class="create-information-btn">
+                            <a href="#">Upload Cover Photo</a>
+                            <a href="#">Upload Your CV</a>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Your Email</label>
-                                <input type="email" class="form-control" />
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Your Email</label>
+                                    <input type="email" name="email" class="form-control" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Date of Birth</label>
-                                <input type="date" class="form-control" />
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Your Phone</label>
+                                    <input type="phone" name="phone" class="form-control" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Your Phone</label>
-                                <input type="text" class="form-control" />
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" name="password" class="form-control" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Job Title</label>
-                                <input type="text" class="form-control" />
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input type="password" name="password" class="form-control" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" class="form-control" />
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" name="address" class="form-control" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <div class="gender-area">
-                                    <span>Gender</span>
-                                    <input type="radio" name="gender" id="male" value="male" checked />
-                                    <label for="male">Male</label>
-                                    <input type="radio" name="gender" id="female" value="female" />
-                                    <label for="female">Female</label>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicInput">User Type</label>
+                                    <select name="type" required class="form-control" id="type">
+                                        <option value="">-- Choose Type --</option>
+                                        <option value="Agent">Agent</option>
+                                        <option value="Seeker">Seeker</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea id="your_message" class="form-control" rows="8"></textarea>
-                            </div>
+                        <div class="text-left">
+                            <button type="submit" class="btn create-ac-btn">Save</button>
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="create-education">
-                <div class="create-education-wrap">
-                    <div class="create-education-left">
-                        <h3>Education</h3>
-                    </div>
-                    <div class="create-education-right">
-                        <a href="#">Add Education</a>
-                    </div>
-                </div>
-                <form>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Degree</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Institute</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Year</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="create-skills">
-                <div class="create-skills-wrap">
-                    <div class="create-skills-left">
-                        <h3>Skill</h3>
-                    </div>
-                    <div class="create-skills-right">
-                        <a href="#">Edit</a>
-                        <a href="#">Add Skill</a>
-                    </div>
-                </div>
-                <form>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="skill">
-                                <p>Percentage</p>
-                                <div class="skill-bar skill1 wow slideInLeft animated">
-                                    <span class="skill-count1">70%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="create-skills">
-                <div class="create-skills-wrap">
-                    <div class="create-skills-left">
-                        <h3>Social Links</h3>
-                    </div>
-                    <div class="create-skills-right">
-                        <a href="#">Edit</a>
-                        <a href="#">Add New</a>
-                    </div>
-                </div>
-                <form>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Facebook</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Instagram</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Linedin</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Dribbble</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="text-left">
-                <button type="submit" class="btn create-ac-btn">Save</button>
             </div>
         </div>
     </div>

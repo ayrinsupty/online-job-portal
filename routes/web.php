@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\SeekerExperienceController;
 use App\Http\Controllers\Backend\SeekerExpertController;
 use App\Http\Controllers\Backend\SeekerReferenceController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Frontend\CandidateRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,11 +52,13 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
 */
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/candidate-login', [PageController::class, 'candidateLogin'])->name('candidateLogin');
-Route::get('/agent-login', [PageController::class, 'agentLogin'])->name('agentLogin');
 Route::get('/employer-login', [PageController::class, 'employerLogin'])->name('employerLogin');
 Route::get('/candidate-register', [PageController::class, 'candidateRegister'])->name('candidateRegister');
-Route::get('/agent-register', [PageController::class, 'agentRegister'])->name('agentRegister');
 Route::get('/employer-register', [PageController::class, 'employerRegister'])->name('employerRegister');
+
+// Candidate Registration
+Route::get('/candidate/registration', [CandidateRegistrationController::class, 'registration'])->name('candidate.registration');
+Route::post('/candidate/registration', [CandidateRegistrationController::class, 'store'])->name('candidate.store');
 
 /*
 |--------------------------------------------------------------------------

@@ -44,20 +44,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-6">
-                        <div class="jobseeker-item">
-                            <div class="jobseeker-icon">
-                                <i class="flaticon-job-search"></i>
-                            </div>
-                            <div class="jobseeker-inner">
-                                <span>Agent</span>
-                                <h3>Login as an Agent</h3>
-                            </div>
-                            <a href="{{ route('agentLogin') }}">Get Started
-                                <i class="icofont-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
+                    
                     <div class="col-sm-6 col-lg-6">
                         <div class="jobseeker-item">
                             <div class="jobseeker-icon">

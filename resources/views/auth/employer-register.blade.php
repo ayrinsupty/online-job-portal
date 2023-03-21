@@ -30,7 +30,7 @@
             <div class="create-photo">
                 <div class="already-create">
                     <span>Already have an account?</span>
-                    <a href="{{ route('agentLogin') }}">Sign In</a>
+                    <a href="{{ route('employerLogin') }}">Sign In</a>
                 </div>
                 <form>
                     <div class="row align-items-center">
