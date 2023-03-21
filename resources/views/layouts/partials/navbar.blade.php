@@ -76,7 +76,7 @@
                                     <a href="company-details.html" class="nav-link">Company Details</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="login.html" class="nav-link">Login Page</a>
+                                    <a href="{{ route('login') }}" class="nav-link">Login Page</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="create-account.html" class="nav-link">Create Account Page</a>

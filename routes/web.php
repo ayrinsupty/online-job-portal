@@ -50,6 +50,12 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
 |--------------------------------------------------------------------------
 */
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/candidate-login', [PageController::class, 'candidateLogin'])->name('candidateLogin');
+Route::get('/agent-login', [PageController::class, 'agentLogin'])->name('agentLogin');
+Route::get('/employer-login', [PageController::class, 'employerLogin'])->name('employerLogin');
+Route::get('/candidate-register', [PageController::class, 'candidateRegister'])->name('candidateRegister');
+Route::get('/agent-register', [PageController::class, 'agentRegister'])->name('agentRegister');
+Route::get('/employer-register', [PageController::class, 'employerRegister'])->name('employerRegister');
 
 /*
 |--------------------------------------------------------------------------

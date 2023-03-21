@@ -7,44 +7,39 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function home()
     {
         return view('home');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function candidateLogin()
     {
-        //
+        return view('auth.candidate-login');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function agentLogin()
     {
-        //
+        return view('auth.agent-login');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function employerLogin()
     {
-        //
+        return view('auth.employer-login');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function candidateRegister()
     {
-        //
+        return view('auth.candidate-register');
+    }
+
+    public function agentRegister()
+    {
+        return view('auth.agent-register');
+    }
+
+    public function employerRegister()
+    {
+        return view('auth.employer-register');
     }
 
     /**

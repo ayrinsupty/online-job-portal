@@ -39,7 +39,21 @@
                                 <span>Candidate</span>
                                 <h3>Login as a Candidate</h3>
                             </div>
-                            <a href="login.html">Get Started
+                            <a href="{{ route('candidateLogin') }}">Get Started
+                                <i class="icofont-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-6">
+                        <div class="jobseeker-item">
+                            <div class="jobseeker-icon">
+                                <i class="flaticon-job-search"></i>
+                            </div>
+                            <div class="jobseeker-inner">
+                                <span>Agent</span>
+                                <h3>Login as an Agent</h3>
+                            </div>
+                            <a href="{{ route('agentLogin') }}">Get Started
                                 <i class="icofont-arrow-right"></i>
                             </a>
                         </div>
@@ -53,43 +67,12 @@
                                 <span>Employer</span>
                                 <h3>Login as a Employer</h3>
                             </div>
-                            <a href="login.html">Get Started
+                            <a href="{{ route('employerLogin') }}">Get Started
                                 <i class="icofont-arrow-right"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-                <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Username, Phone Number or Email" />
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder="Password" />
-                </div>
-                <div class="login-sign-in">
-                    <a href="#">Forgot Password?</a>
-                    <ul>
-                        <li>Don’t have an account ?</li>
-                        <li>
-                            <a href="{{ route('register') }}">Sign Up Here</a>
-                        </li>
-                    </ul>
-                    <div class="text-center">
-                        <button type="submit" class="btn login-btn">Sign In</button>
-                    </div>
-                </form>
-            </div>
-            <div class="login-social">
-                <a href="https://www.facebook.com/" target="_blank">
-                    <i class="icofont-facebook"></i>
-                    Login With Facebook
-                </a>
-                <a class="login-google" href="https://mail.google.com/" target="_blank">
-                    <i class="icofont-google-plus"></i>
-                    Login With Google
-                </a>
             </div>
         </div>
     </div>

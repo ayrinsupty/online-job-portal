@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    User Registration
+    Employer Registration
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
             <div class="d-table-cell">
                 <div class="container">
                     <div class="page-title-text">
-                        <h2>Create Account</h2>
+                        <h2>Create Employer Account</h2>
                         <ul>
                             <li>
                                 <a href="{{ route('home') }}">Home</a>
@@ -17,7 +17,7 @@
                             <li>
                                 <i class="icofont-simple-right"></i>
                             </li>
-                            <li>Create Account</li>
+                            <li>Create Employer Account</li>
                         </ul>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
             <div class="create-photo">
                 <div class="already-create">
                     <span>Already have an account?</span>
-                    <a href="{{ route('login') }}">Sign In</a>
+                    <a href="{{ route('agentLogin') }}">Sign In</a>
                 </div>
                 <form>
                     <div class="row align-items-center">
@@ -108,7 +108,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Address:</label>
+                                <label>Address</label>
                                 <input type="text" class="form-control" />
                             </div>
                         </div>
