@@ -22,6 +22,6 @@ class User extends Model
         'type',
     ];
 
-    public static $statusArrays = ['active', 'deactive'];
+    public static $statusArrays = ['active', 'inactive'];
 
 }

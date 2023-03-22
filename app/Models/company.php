@@ -20,7 +20,7 @@ class Company extends Model
         'logo',
     ];
 
-    public static $statusArrays = ['active', 'deactive'];
+    public static $statusArrays = ['active', 'inactive'];
 
     public function user(){
         return $this->belongsTo(User::class,'user_id','id');

@@ -15,6 +15,8 @@ use App\Http\Controllers\Backend\SeekerExpertController;
 use App\Http\Controllers\Backend\SeekerReferenceController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\CandidateRegistrationController;
+use App\Http\Controllers\Frontend\EmployerRegistrationController;
+use App\Http\Controllers\Frontend\UserRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,9 +58,9 @@ Route::get('/employer-login', [PageController::class, 'employerLogin'])->name('e
 Route::get('/candidate-register', [PageController::class, 'candidateRegister'])->name('candidateRegister');
 Route::get('/employer-register', [PageController::class, 'employerRegister'])->name('employerRegister');
 
-// Candidate Registration
-Route::get('/candidate/registration', [CandidateRegistrationController::class, 'registration'])->name('candidate.registration');
-Route::post('/candidate/registration', [CandidateRegistrationController::class, 'store'])->name('candidate.store');
+// User Registration
+Route::get('/user/registration', [UserRegistrationController::class, 'registration'])->name('user.registration');
+Route::post('/user/registration', [UserRegistrationController::class, 'store'])->name('user.store');
 
 /*
 |--------------------------------------------------------------------------

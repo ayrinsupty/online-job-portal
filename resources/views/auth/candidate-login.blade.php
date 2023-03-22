@@ -43,7 +43,7 @@
                     <ul>
                         <li>Don’t have an account ?</li>
                         <li>
-                            <a href="{{ route('candidateRegister') }}">Sign Up Here</a>
+                            <a href="{{ route('register') }}">Sign Up Here</a>
                         </li>
                     </ul>
                     <div class="text-center">

@@ -22,13 +22,8 @@ class PageController extends Controller
         return view('auth.employer-login');
     }
 
-    public function candidateRegister()
+    public function register()
     {
-        return view('auth.candidate-register');
-    }
-    
-    public function employerRegister()
-    {
-        return view('auth.employer-register');
+        return view('auth.register');
     }
 }
