@@ -9,7 +9,7 @@
             <div class="d-table-cell">
                 <div class="container">
                     <div class="page-title-text">
-                        <h2>Create Account</h2>
+                        <h2>Update Your Profile</h2>
                         <ul>
                             <li>
                                 <a href="{{ route('home') }}">Home</a>
@@ -17,7 +17,7 @@
                             <li>
                                 <i class="icofont-simple-right"></i>
                             </li>
-                            <li>Create Account</li>
+                            <li>Profile</li>
                         </ul>
                     </div>
                 </div>

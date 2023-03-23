@@ -111,7 +111,7 @@ class SeekerController extends Controller
                 'company_name' => 'required|max:200',
                 'designation' => 'required',
                 'from_date' => 'required|date',
-                'to_date' => 'required|date',
+                'to_date' => 'nullable|date',
             ]);
             $edu = new SeekerExperience();
             $edu->user_id = auth()->id();
