@@ -97,6 +97,7 @@
                     </div>
                 </form>
             </div>
+            @role('Seeker')
             <div class="create-information">
                 <form action="{{ route('add.education') }}" method="post">
                     @csrf
@@ -383,6 +384,10 @@
                     </div>
                 </form>
             </div>
+            @endrole
+            @role('Agent')
+{{--Agent company form will here    --}}
+            @endrole
             {{--            <div class="create-skills">--}}
             {{--                <div class="create-skills-wrap">--}}
             {{--                    <div class="create-skills-left">--}}
