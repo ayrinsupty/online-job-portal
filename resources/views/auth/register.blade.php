@@ -56,7 +56,7 @@
                                         <input type="text"
                                                class="form-control  @error('first_name') is-invalid @enderror"
                                                 name="first_name"
-                                               placeholder="Your Name Here"/>
+                                               placeholder="Your First Name Here"/>
                                         @error('first_name')
                                         <strong class="text-danger">{{ $errors->first('first_name') }}</strong>
                                         @enderror
@@ -64,15 +64,15 @@
                                     <div class="form-group">
                                         <input type="text"  name="last_name"
                                                class="form-control  @error('last_name') is-invalid @enderror"
-                                               placeholder="Profession"/>
+                                               placeholder="Your Last Name Here"/>
                                         @error('last_name')
                                         <strong class="text-danger">{{ $errors->first('last_name') }}</strong>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="text"  name="phone"
+                                        <input type="tel"  name="phone"
                                                class="form-control  @error('phone') is-invalid @enderror"
-                                               placeholder="Profession"/>
+                                               placeholder="Your Phone No Here"/>
                                         @error('phone')
                                         <strong class="text-danger">{{ $errors->first('phone') }}</strong>
                                         @enderror
@@ -80,7 +80,7 @@
                                     <div class="form-group">
                                         <input type="text" name="address"
                                                class="form-control  @error('address') is-invalid @enderror"
-                                               placeholder="Profession"/>
+                                               placeholder="Your Address Here"/>
                                         @error('address')
                                         <strong class="text-danger">{{ $errors->first('address') }}</strong>
                                         @enderror
@@ -88,7 +88,7 @@
                                     <div class="form-group">
                                         <input type="email" name="email"
                                                class="form-control  @error('email') is-invalid @enderror"
-                                               placeholder="Profession"/>
+                                               placeholder="Your Email Here"/>
                                         @error('email')
                                         <strong class="text-danger">{{ $errors->first('email') }}</strong>
                                         @enderror
@@ -96,7 +96,7 @@
                                     <div class="form-group">
                                         <input type="password" name="password"
                                                class="form-control  @error('password') is-invalid @enderror"
-                                               placeholder="Profession"/>
+                                               placeholder="Your Password Here"/>
                                         @error('password')
                                         <strong class="text-danger">{{ $errors->first('password') }}</strong>
                                         @enderror
@@ -104,7 +104,7 @@
                                     <div class="form-group">
                                         <input type="password" name="password_confirmation"
                                                class="form-control  @error('password_confirmation') is-invalid @enderror"
-                                               placeholder="Profession"/>
+                                               placeholder="Your Confirm Password Here"/>
                                         @error('password_confirmation')
                                         <strong class="text-danger">{{ $errors->first('password_confirmation') }}</strong>
                                         @enderror
