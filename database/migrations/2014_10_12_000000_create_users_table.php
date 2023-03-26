@@ -23,7 +23,11 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->text('address');
             $table->string('password');
-            $table->string('image')->nullable();
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('office_address')->nullable();
+            $table->string('logo,')->nullable();
             $table->string('type')->default('Seeker');
             $table->string('status')->default('active');
             $table->rememberToken();

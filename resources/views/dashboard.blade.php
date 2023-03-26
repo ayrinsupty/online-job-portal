@@ -86,6 +86,9 @@
                                         <strong class="text-danger">{{ $errors->first('address') }}</strong>
                                         @enderror
                                     </div>
+                                    @role('Agent')
+                                    {{--Agent company form will here    --}}
+                                    @endrole
                                     <div class="text-right">
                                         <button type="submit" name="updateUser" class="btn create-photo-btn">
                                             Done
@@ -385,9 +388,7 @@
                 </form>
             </div>
             @endrole
-            @role('Agent')
-{{--Agent company form will here    --}}
-            @endrole
+
             {{--            <div class="create-skills">--}}
             {{--                <div class="create-skills-wrap">--}}
             {{--                    <div class="create-skills-left">--}}
