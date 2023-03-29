@@ -23,9 +23,10 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->text('address');
             $table->string('password');
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('image')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_email')->nullable();
+            $table->string('company_phone')->nullable();
             $table->string('office_address')->nullable();
             $table->string('logo,')->nullable();
             $table->string('type')->default('Seeker');

@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
                 $user->email = $faker->email;
 
             }
-                $user->password = Hash::make('12345678');
+            $user->password = Hash::make('12345678');
             $user->phone = $faker->phoneNumber;
             $user->address = "Dhaka";
             $user->image = $faker->imageUrl;
