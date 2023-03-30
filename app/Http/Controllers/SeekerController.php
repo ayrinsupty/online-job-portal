@@ -19,12 +19,25 @@ class SeekerController extends Controller
                 'last_name' => 'required|max:300',
                 'phone' => 'required|max:300',
                 'address' => 'required|max:300',
+                'company_name' => 'required|max:300',
+                'company_email' => 'required|max:300',
+                'company_phone' => 'required|max:300',
+                'office_address' => 'required|max:300',
             ]);
             $edu = User::find(auth()->id());
             $edu->first_name = $request->first_name;
             $edu->last_name = $request->last_name;
             $edu->phone = $request->phone;
             $edu->address = $request->address;
+            $edu->company_name = $request->company_name;
+            $edu->company_email = $request->company_email;
+            $edu->company_phone = $request->company_phone;
+            $edu->office_address = $request->office_address;
+            if (!empty($request->logo)) {
+                $edu->logo = imageUpload($request->logo, 'Logo');
+            }if (!empty($request->image)) {
+                $edu->image = imageUpload($request->image, 'Image');
+            }
             $edu->save();
             return back();
         }

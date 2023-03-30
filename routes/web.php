@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\JobController;
 use App\Http\Controllers\SeekerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -64,12 +66,10 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth:web']
     Route::get('admins/status/{slug}', [AdminController::class, 'isActive'])->name('admins.status');
     Route::resource('users', UserController::class, ['names' => 'users']);
     Route::get('users/status/{slug}', [UserController::class, 'isActive'])->name('users.status');
-    Route::resource('companies', CompanyController::class, ['names' => 'companies']);
-    Route::get('companies/status/{slug}', [CompanyController::class, 'isActive'])->name('companies.status');
-    Route::resource('seekerEducations', SeekerEducationController::class, ['names' => 'seekerEducations']);
-    Route::resource('seekerExperiences', SeekerExperienceController::class, ['names' => 'seekerExperiences']);
-    Route::resource('seekerReferences', SeekerReferenceController::class, ['names' => 'seekerReferences']);
-    Route::resource('seekerExperts', SeekerExpertController::class, ['names' => 'seekerExperts']);
+   Route::resource('category', CategoryController::class, ['names' => 'categories']);
+    Route::resource('job', JobController::class, ['names' => 'jobs']);
+    Route::get('admins/status/{slug}', [JobController::class, 'isActive'])->name('jobs.status');
+
 });
 Route::post('seeker/education',[SeekerController::class,'addEducation'])->name('add.education');
 Route::get('seeker/education/delete/{id}',[SeekerController::class,'deleteEducation'])->name('delete.education');

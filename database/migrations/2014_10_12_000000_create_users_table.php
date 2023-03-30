@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('company_email')->nullable();
             $table->string('company_phone')->nullable();
             $table->string('office_address')->nullable();
-            $table->string('logo,')->nullable();
+            $table->string('logo')->nullable();
             $table->string('type')->default('Seeker');
             $table->string('status')->default('active');
             $table->rememberToken();

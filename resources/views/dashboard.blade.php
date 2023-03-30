@@ -32,13 +32,13 @@
                     <span>Already have an account?</span>
                     <a href="{{ route('login') }}">Sign In</a>
                 </div>
-                <form method="post" action="{{ route('update.user') }}">
+                <form method="post" action="{{ route('update.user') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row align-items-center">
                         <div class="col-lg-4">
                             <div class="create-photo-item">
                                 <div class="create-photo-left">
-                                    <img src="{{ auth()->user()->image }}" alt="">
+                                    <img src="{{ asset('images/' . auth()->user()->image) }}" alt="">
                                     <div class="d-table">
                                         <div class="d-table-cell">
                                             <div class="form-group">
@@ -57,7 +57,7 @@
                                         <input type="text"
                                                class="form-control  @error('first_name') is-invalid @enderror"
                                                value="{{ auth()->user()->first_name }}" name="first_name"
-                                               placeholder="Your Name Here"/>
+                                               placeholder="First Name"/>
                                         @error('first_name')
                                         <strong class="text-danger">{{ $errors->first('first_name') }}</strong>
                                         @enderror
@@ -65,7 +65,7 @@
                                     <div class="form-group">
                                         <input type="text" value="{{ auth()->user()->last_name }}" name="last_name"
                                                class="form-control  @error('last_name') is-invalid @enderror"
-                                               placeholder="Profession"/>
+                                               placeholder="Last name"/>
                                         @error('last_name')
                                         <strong class="text-danger">{{ $errors->first('last_name') }}</strong>
                                         @enderror
@@ -73,7 +73,7 @@
                                     <div class="form-group">
                                         <input type="text" value="{{ auth()->user()->phone }}" name="phone"
                                                class="form-control  @error('phone') is-invalid @enderror"
-                                               placeholder="Profession"/>
+                                               placeholder="Phone no"/>
                                         @error('phone')
                                         <strong class="text-danger">{{ $errors->first('phone') }}</strong>
                                         @enderror
@@ -81,12 +81,57 @@
                                     <div class="form-group">
                                         <input type="text" value="{{ auth()->user()->address }}" name="address"
                                                class="form-control  @error('address') is-invalid @enderror"
-                                               placeholder="Profession"/>
+                                               placeholder="Address"/>
                                         @error('address')
                                         <strong class="text-danger">{{ $errors->first('address') }}</strong>
                                         @enderror
                                     </div>
                                     @role('Agent')
+                                    <div class="form-group">
+                                        <input type="text" value="{{ auth()->user()->company_name }}"
+                                               name="company_name"
+                                               class="form-control  @error('company_name') is-invalid @enderror"
+                                               placeholder="Company Name"/>
+                                        @error('company_name')
+                                        <strong class="text-danger">{{ $errors->first('company_name') }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" value="{{ auth()->user()->company_email }}"
+                                               name="company_email"
+                                               class="form-control  @error('company_email') is-invalid @enderror"
+                                               placeholder="Company Email"/>
+                                        @error('company_email')
+                                        <strong class="text-danger">{{ $errors->first('company_email') }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" value="{{ auth()->user()->company_phone }}"
+                                               name="company_phone"
+                                               class="form-control  @error('company_phone') is-invalid @enderror"
+                                               placeholder="Company Phone"/>
+                                        @error('company_phone')
+                                        <strong class="text-danger">{{ $errors->first('company_phone') }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" value="{{ auth()->user()->office_address }}"
+                                               name="office_address"
+                                               class="form-control  @error('office_address') is-invalid @enderror"
+                                               placeholder="Company Address"/>
+                                        @error('office_address')
+                                        <strong class="text-danger">{{ $errors->first('office_address') }}</strong>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" name="logo"
+                                               class="form-control  @error('logo') is-invalid @enderror"/>
+                                        @error('logo')
+                                        <strong class="text-danger">{{ $errors->first('logo') }}</strong>
+                                        @enderror
+                                        <img style="height: 100px; width:120px;"
+                                             src="{{ asset('images/' . auth()->user()->logo) }}" alt="">
+                                    </div>
                                     {{--Agent company form will here    --}}
                                     @endrole
                                     <div class="text-right">

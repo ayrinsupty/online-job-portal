@@ -117,6 +117,28 @@ class RolePermissionSeeder extends Seeder
                     'user.approve',
                 ]
             ],
+            [
+                'group_name' => 'category',
+                'permissions' => [
+                    // User Permissions
+                    'category.create',
+                    'category.view',
+                    'category.edit',
+                    'category.delete',
+                    'category.approve',
+                ]
+            ],
+            [
+                'group_name' => 'job',
+                'permissions' => [
+                    // User Permissions
+                    'job.create',
+                    'job.view',
+                    'job.edit',
+                    'job.delete',
+                    'job.approve',
+                ]
+            ],
 
         ];
 

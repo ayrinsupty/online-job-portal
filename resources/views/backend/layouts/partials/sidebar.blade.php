@@ -106,32 +106,43 @@
                     </li>
                 @endif
 
-{{--                --}}{{-- Seeker Education --}}
-{{--                @if (--}}
-{{--                    $userGuard->can('seekerEducation.view') ||--}}
-{{--                        $userGuard->can('seekerEducation.create') ||--}}
-{{--                        $userGuard->can('seekerEducation.edit') ||--}}
-{{--                        $userGuard->can('seekerEducation.delete'))--}}
-{{--                    <li class="sidebar-item has-sub">--}}
-{{--                        <a href="#" class='sidebar-link'>--}}
-{{--                            <i class="bi bi-stack"></i>--}}
-{{--                            <span>Seeker's Education</span>--}}
-{{--                        </a>--}}
-{{--                        <ul class="submenu"--}}
-{{--                            {{ Route::is('admin.seekerEducations.create') || Route::is('admin.seekerEducations.edit') || Route::is('admin.seekerEducations.index') ? 'style=display:block;' : '' }}>--}}
-{{--                            <li class="submenu-item ">--}}
-{{--                                @if ($userGuard->can('seekerEducation.view'))--}}
-{{--                                    <a {{ Route::is('admin.seekerEducations.edit') || Route::is('admin.seekerEducations.index') ? 'style=color:#435ebe;' : '' }}--}}
-{{--                                       href="{{ route('admin.seekerEducations.index') }}">Seeker's Education</a>--}}
-{{--                                @endif--}}
-{{--                                @if ($userGuard->can('seekerEducation.create'))--}}
-{{--                                    <a {{ Route::is('admin.seekerEducations.create') ? 'style=color:#435ebe;' : '' }}--}}
-{{--                                       href="{{ route('admin.seekerEducations.create') }}">Create Seeker's Education</a>--}}
-{{--                                @endif--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-{{--                @endif--}}
+{{--                 Seeker Education --}}
+                @role ('Super Admin')
+                <li class="sidebar-item has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Category</span>
+                        </a>
+                        <ul class="submenu"
+                            {{ Route::is('admin.categories.create') || Route::is('admin.categories.edit') || Route::is('admin.categories.index') ? 'style=display:block;' : '' }}>
+                            <li class="submenu-item ">
+                                    <a {{ Route::is('admin.categories.edit') || Route::is('admin.categories.index') ? 'style=color:#435ebe;' : '' }}
+                                       href="{{ route('admin.categories.index') }}">Category</a>
+                                    <a {{ Route::is('admin.categories.create') ? 'style=color:#435ebe;' : '' }}
+                                       href="{{ route('admin.categories.create') }}">Create Category</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endrole
+
+{{--                 Job Post --}}
+                @role ('Agent')
+                    <li class="sidebar-item has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Job</span>
+                        </a>
+                        <ul class="submenu"
+                            {{ Route::is('admin.jobs.create') || Route::is('admin.jobs.edit') || Route::is('admin.jobs.index') ? 'style=display:block;' : '' }}>
+                            <li class="submenu-item ">
+                                    <a {{ Route::is('admin.jobs.edit') || Route::is('admin.jobs.index') ? 'style=color:#435ebe;' : '' }}
+                                       href="{{ route('admin.jobs.index') }}">Job</a>
+                                    <a {{ Route::is('admin.jobs.create') ? 'style=color:#435ebe;' : '' }}
+                                       href="{{ route('admin.jobs.create') }}">Create Job</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endrole
 
 {{--                --}}{{-- Seeker Experience --}}
 {{--                @if (--}}
