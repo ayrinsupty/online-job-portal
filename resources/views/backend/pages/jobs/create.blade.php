@@ -55,12 +55,41 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="salary">Salary</label>
+                                            <input type="number" name="salary"
+                                                   class="form-control @error('salary') is-invalid @enderror"
+                                                   id="salary"
+                                                   placeholder="Enter Name" value="{{ old('salary') }}">
+                                            @error('salary')
+                                            <strong class="text-danger">{{ $errors->first('salary') }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="salary">Type</label>
+                                            <select class="form-control" name="type" id="">
+                                                <option value="">--Chose Type--</option>
+                                                @foreach(\App\Models\Job::$statusType as $item)
+                                                    <option value="{{ $item }}">{{ $item }}</option>
+                                                @endforeach
+                                            </select>
+
+                                            @error('salary')
+                                            <strong class="text-danger">{{ $errors->first('salary') }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="short_description">Short Description</label>
-                                            <textarea name="short_description"
-                                                      class="form-control @error('short_description') is-invalid @enderror"
-                                                      rows="2" cols="2"></textarea>
+                                            <input type="text" name="short_description"
+                                                   class="form-control @error('short_description') is-invalid @enderror"
+                                                   id="short_description"
+                                                   placeholder="Enter Name" value="{{ old('short_description') }}">
                                             @error('short_description')
                                             <strong class="text-danger">{{ $errors->first('short_description') }}</strong>
                                             @enderror

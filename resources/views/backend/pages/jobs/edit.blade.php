@@ -56,6 +56,33 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="salary">Salary</label>
+                                            <input type="number" name="salary"
+                                                   class="form-control @error('salary') is-invalid @enderror"
+                                                   id="salary"
+                                                   placeholder="Enter Name" value="{{ old('salary',$singleData->salary) }}">
+                                            @error('salary')
+                                            <strong class="text-danger">{{ $errors->first('salary') }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="salary">Type</label>
+                                            <select class="form-control" name="type" id="">
+                                                <option value="">--Chose Type--</option>
+                                                @foreach(\App\Models\Job::$statusType as $item)
+                                                    <option @selected(old('type', $item) == $item) value="{{ $item }}">{{ $item }}</option>
+                                                @endforeach
+                                            </select>
+
+                                            @error('salary')
+                                            <strong class="text-danger">{{ $errors->first('salary') }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="short_description">Short Description</label>

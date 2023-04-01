@@ -71,12 +71,16 @@ class JobController extends Controller
             'title' => 'required',
             'short_description' => 'required',
             'description' => 'required',
+            'salary' => 'required',
+            'type' => 'required',
             'application_last_date' => 'required',
         ]);
         $row = new Job;
         $row->user_id = auth()->id();
         $row->category_id = $request->category_id;
         $row->title = $request->title;
+        $row->salary = $request->salary;
+        $row->type = $request->type;
         $row->short_description = $request->short_description;
         $row->description = $request->description;
         $row->application_last_date = $request->application_last_date;
@@ -124,6 +128,8 @@ class JobController extends Controller
         $request->validate([
             'category_id' => 'required',
             'title' => 'required',
+            'salary' => 'required',
+            'type' => 'required',
             'short_description' => 'required',
             'description' => 'required',
             'application_last_date' => 'required',
@@ -132,6 +138,8 @@ class JobController extends Controller
         $row->user_id = auth()->id();
         $row->category_id = $request->category_id;
         $row->title = $request->title;
+        $row->salary = $request->salary;
+        $row->type = $request->type;
         $row->short_description = $request->short_description;
         $row->description = $request->description;
         $row->application_last_date = $request->application_last_date;

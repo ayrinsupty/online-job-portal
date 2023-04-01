@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Job;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -12,7 +14,9 @@ class PageController extends Controller
      */
     public function home()
     {
-        return view('home');
+        $data['categories'] = Category::all();
+        $data['jobs'] = Job::all();
+        return view('home',$data);
     }
 
     /**
