@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'username' => ['nullable', 'string', 'max:255'],
-            'phone' => ['required', 'max:11'],
+            'phone' => ['required', 'max:11', 'unique:' . User::class],
             'address' => ['required', 'string', 'max:255'],
             'type' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
