@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Apply;
 use App\Models\Category;
 use App\Models\Job;
 use Illuminate\Http\Request;
@@ -16,7 +17,27 @@ class PageController extends Controller
     {
         $data['categories'] = Category::all();
         $data['jobs'] = Job::all();
-        return view('home',$data);
+        return view('home', $data);
+    }
+
+    public function jobDetails($id)
+    {
+        $data['categories'] = Category::all();
+        $data['jobDetails'] = Job::with('applicant')->find($id);
+        return view('job-details', $data);
+    }
+
+    public function apply($id)
+    {
+        if(Apply::where('user_id',auth()->id())->where('job_id',$id)->first()) {
+        }else{
+        $apply = new Apply();
+        $apply->user_id = auth()->id();
+        $apply->job_id = $id;
+        $apply->user_id = auth()->id();
+        $apply->save();
+        }
+        return back();
     }
 
     /**

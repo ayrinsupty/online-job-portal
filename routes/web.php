@@ -53,6 +53,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
 |--------------------------------------------------------------------------
 */
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/job/{id}', [PageController::class, 'jobDetails'])->name('job.details');
+Route::get('/apply/{id}', [PageController::class, 'apply'])->name('apply')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------

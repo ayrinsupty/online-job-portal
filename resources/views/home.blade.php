@@ -153,7 +153,7 @@
                                     <div class="job-inner-right">
                                         <ul>
                                             <li>
-                                                <a href="create-account.html">Apply</a>
+                                                <a href="{{ route('job.details',$job->id) }}">Apply</a>
                                             </li>
 {{--                                            <li>--}}
 {{--                                                <span>Full Time</span>--}}
