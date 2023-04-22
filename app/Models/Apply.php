@@ -15,7 +15,7 @@ class Apply extends Model
         'job_id',
         'status'
     ];
-    public static $statusArray = ['pending','short-listed','approved'];
+    public static $statusArray = ['pending','short-listed','approved','reject'];
     public function user(){
         return $this->belongsTo(User::class,'user_id','id');
     }

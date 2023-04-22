@@ -16,7 +16,7 @@ class PageController extends Controller
     public function home()
     {
         $data['categories'] = Category::all();
-        $data['jobs'] = Job::all();
+        $data['jobs'] = Job::where('application_last_date', '>=', now())->get();
         return view('home', $data);
     }
 

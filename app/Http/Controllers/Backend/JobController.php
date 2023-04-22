@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Apply;
 use App\Models\Category;
 use App\Models\Job;
 use Illuminate\Http\Request;
@@ -56,6 +57,32 @@ class JobController extends Controller
         $data['pageHeader'] = $this->pageHeader;
         $data['categories'] = Category::all();
         return view('backend.pages.jobs.create', $data);
+    }
+
+    public function allApply($id)
+    {
+        $data['pageHeader'] = $this->pageHeader;
+       $data['datas'] = Apply::where('job_id',$id)->orderBy('id', 'DESC')->paginate(10);
+        return view('backend.pages.jobs.all-applies',$data);
+    }
+    public function shortListed($id)
+    {
+        $data['pageHeader'] = $this->pageHeader;
+       $data['datas'] = Apply::where('job_id',$id)->where('status',\App\Models\Apply::$statusArray[1])->orderBy('id', 'DESC')->paginate(10);
+        return view('backend.pages.jobs.short-listed',$data);
+    }
+    public function confirmListed($id)
+    {
+        $data['pageHeader'] = $this->pageHeader;
+       $data['datas'] = Apply::where('job_id',$id)->where('status',\App\Models\Apply::$statusArray[2])->orderBy('id', 'DESC')->paginate(10);
+        return view('backend.pages.jobs.confirm-listed',$data);
+    }
+ public function approveReject($id,$type)
+    {
+        $row = Apply::find($id);
+        $row->status = $type;
+        $row->save();
+        return back();
     }
 
     /**

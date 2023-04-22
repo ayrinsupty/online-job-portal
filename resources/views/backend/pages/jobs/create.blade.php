@@ -45,7 +45,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="application_last_date">Application Last Date</label>
-                                            <input type="text" name="application_last_date"
+                                            <input type="date" name="application_last_date"
                                                    class="form-control @error('application_last_date') is-invalid @enderror"
                                                    id="application_last_date"
                                                    placeholder="Enter Name" value="{{ old('application_last_date') }}">
