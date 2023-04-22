@@ -85,6 +85,13 @@ class JobController extends Controller
         return back();
     }
 
+    public function viewApplication($jobid,$userid)
+    {
+        $data['pageHeader'] = $this->pageHeader;
+       $data['seeker'] = Apply::where('job_id',$jobid)->where('user_id',$userid)->first();
+        return view('backend.pages.jobs.seeker-cv',$data);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -71,6 +71,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth:web']
    Route::resource('category', CategoryController::class, ['names' => 'categories']);
     Route::resource('job', JobController::class, ['names' => 'jobs']);
     Route::get('/all/apply/{id}', [JobController::class, 'allApply'])->name('all.apply');
+    Route::get('/application/view/{jobid}/{userid}', [JobController::class, 'viewApplication'])->name('application.view');
     Route::get('/short-listed/{id}', [JobController::class, 'shortListed'])->name('short.listed');
     Route::get('/confirm-listed/{id}', [JobController::class, 'confirmListed'])->name('confirm.listed');
     Route::get('approval/{id}/{status}', [JobController::class, 'approveReject'])->name('approval.confirmantion');

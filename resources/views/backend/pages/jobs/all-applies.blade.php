@@ -30,6 +30,9 @@
                                     <td>{{ $data->created_at }}</td>
                                     <td>{{ $data->status }}</td>
                                     <td>
+                                        <a class="badge bg-dark"
+                                           href="{{ route('admin.application.view',[$data->job_id,$data->user_id]) }}"><i
+                                                class="fas fa-eye"></i></a>
                                         @if($data->status == \App\Models\Apply::$statusArray[0])
                                             <a class="badge bg-info"
                                                 href="{{ route('admin.approval.confirmantion', [$data->id,\App\Models\Apply::$statusArray[1]]) }}"><i
