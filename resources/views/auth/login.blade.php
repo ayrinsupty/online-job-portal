@@ -63,10 +63,11 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Username, Phone Number or Email" />
+                    <input type="email" name="email" class="form-control"
+                           placeholder="Username, Phone Number or Email"/>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder="Password" />
+                    <input type="password" name="password" class="form-control" placeholder="Password"/>
                 </div>
                 <div class="login-sign-in">
                     <a href="#">Forgot Password?</a>
@@ -79,18 +80,9 @@
                     <div class="text-center">
                         <button type="submit" class="btn login-btn">Sign In</button>
                     </div>
-                </form>
-            </div>
-            <div class="login-social">
-                <a href="https://www.facebook.com/" target="_blank">
-                    <i class="icofont-facebook"></i>
-                    Login With Facebook
-                </a>
-                <a class="login-google" href="https://mail.google.com/" target="_blank">
-                    <i class="icofont-google-plus"></i>
-                    Login With Google
-                </a>
-            </div>
+                </div>
+            </form>
+
         </div>
     </div>
 @endsection
