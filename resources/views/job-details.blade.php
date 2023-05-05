@@ -11,24 +11,24 @@
                         <h1>Search Here For <span>Better</span> Job</h1>
                         <p>Jobs, Employment & Future Career Opportunities</p>
                         <div class="banner-form-area">
-                            <form>
+                            <form action="{{ route('home') }}">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Job Title">
+                                            <input type="text" name="search" class="form-control" placeholder="Job Title">
                                             <label>
                                                 <i class="icofont-search-1"></i>
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>
-                                                <i class="icofont-location-pin"></i>
-                                            </label>
-                                            <input type="text" class="form-control" placeholder="City or State">
-                                        </div>
-                                    </div>
+{{--                                    <div class="col-lg-6">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>--}}
+{{--                                                <i class="icofont-location-pin"></i>--}}
+{{--                                            </label>--}}
+{{--                                            <input type="text" class="form-control" placeholder="City or State">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                 </div>
                                 <button type="submit" class="btn banner-form-btn">Search</button>
                             </form>
@@ -138,15 +138,15 @@
                         @foreach($jobDetails->applicant as $application)
                             @if($application->user_id == auth()->id())
                                 @php
-                           $userId = auth()->id();
-                            break;
+                                    $userId = auth()->id();
+                                     break;
                                 @endphp
                             @endif
-                                @endforeach
-@if($userId)
+                        @endforeach
+                        @if($userId)
                         @else
-                                <a href="{{ route('apply',$jobDetails->id) }}">Apply</a>
-@endif
+                            <a href="{{ route('apply',$jobDetails->id) }}">Apply</a>
+                        @endif
                     </div>
                 </div>
             </div>

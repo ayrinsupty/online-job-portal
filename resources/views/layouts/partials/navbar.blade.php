@@ -21,6 +21,9 @@
                         </li>
                         @auth
                             @role('Seeker')
+                            <li class="nav-item">
+                                <a href="{{ route('job.application') }}" class="nav-link">My Application</a>
+                            </li>
                             @else
                             <li class="nav-item">
                                 <a href="{{ route('admin.home') }}" class="nav-link">Panel</a>

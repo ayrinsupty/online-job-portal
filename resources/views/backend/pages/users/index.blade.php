@@ -37,7 +37,7 @@
                                     </td>
                                     <td>{{ $user->type }}</td>
                                     <td>{{ $user->address }}</td>
-                                    @if (Auth::guard('admin')->user()->can('user.edit'))
+
                                         <td>
                                             <div class="form-check form-switch">
                                                 <input
@@ -47,17 +47,15 @@
                                                     id="flexSwitchCheckDefault">
                                             </div>
                                         </td>
-                                    @endif
                                     <td>
-                                        @if (Auth::guard('admin')->user()->can('user.edit'))
+
                                             <a class="badge bg-info" href="{{ route('admin.users.edit', $user->id) }}"><i
                                                     class="fas fa-edit"></i></a>
-                                        @endif
-                                        @if (Auth::guard('admin')->user()->can('user.delete'))
+
                                             <a class="badge bg-danger" href="javascript:void(0)"
                                                 onclick="dataDelete({{ $user->id }},'{{ $pageHeader['base_url'] }}')"><i
                                                     class="fas fa-trash"></i></a>
-                                        @endif
+
                                     </td>
                                     </td>
                                 </tr>

@@ -16,7 +16,12 @@ class PageController extends Controller
     public function home()
     {
         $data['categories'] = Category::all();
-        $data['jobs'] = Job::where('application_last_date', '>=', now())->get();
+        if ($search = (\request()->query('search'))) {
+
+            $data['jobs'] = Job::where('application_last_date', '>=', now())->where('title', 'LIKE', '%' .$search . '%')->get();
+        } else {
+            $data['jobs'] = Job::where('application_last_date', '>=', now())->get();
+        }
         return view('home', $data);
     }
 
@@ -29,13 +34,13 @@ class PageController extends Controller
 
     public function apply($id)
     {
-        if(Apply::where('user_id',auth()->id())->where('job_id',$id)->first()) {
-        }else{
-        $apply = new Apply();
-        $apply->user_id = auth()->id();
-        $apply->job_id = $id;
-        $apply->user_id = auth()->id();
-        $apply->save();
+        if (Apply::where('user_id', auth()->id())->where('job_id', $id)->first()) {
+        } else {
+            $apply = new Apply();
+            $apply->user_id = auth()->id();
+            $apply->job_id = $id;
+            $apply->user_id = auth()->id();
+            $apply->save();
         }
         return back();
     }

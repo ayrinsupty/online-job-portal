@@ -51,7 +51,7 @@
                 })
                 $.ajax({
                     url: url_base_name + "/" + id,
-                    type: "DELETE",
+                    type: "GET",
                     data: {
                         _token: $("input[name=_token]").val()
                     },

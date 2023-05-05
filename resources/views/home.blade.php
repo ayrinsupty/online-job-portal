@@ -11,27 +11,28 @@
                         <h1>Search Here For <span>Better</span> Job</h1>
                         <p>Jobs, Employment & Future Career Opportunities</p>
                         <div class="banner-form-area">
-                            <form>
+                            <form action="{{ route('home') }}">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Job Title">
+                                            <input type="text" name="search" class="form-control" placeholder="Job Title">
                                             <label>
                                                 <i class="icofont-search-1"></i>
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>
-                                                <i class="icofont-location-pin"></i>
-                                            </label>
-                                            <input type="text" class="form-control" placeholder="City or State">
-                                        </div>
-                                    </div>
+                                    {{--                                    <div class="col-lg-6">--}}
+                                    {{--                                        <div class="form-group">--}}
+                                    {{--                                            <label>--}}
+                                    {{--                                                <i class="icofont-location-pin"></i>--}}
+                                    {{--                                            </label>--}}
+                                    {{--                                            <input type="text" class="form-control" placeholder="City or State">--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </div>--}}
                                 </div>
                                 <button type="submit" class="btn banner-form-btn">Search</button>
                             </form>
+
                         </div>
                     </div>
                     <div class="banner-img">
@@ -167,174 +168,151 @@
                     @endforeach
                 </div>
             </div>
-            <div class="job-pagination">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <i class="icofont-simple-left"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icofont-simple-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </section>
 
 
-    <section class="companies-area ptb-100">
-        <div class="container">
-            <div class="section-title">
-                <h2>Popular Companies</h2>
-            </div>
-            <div class="companies-slider owl-theme owl-carousel">
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/1.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Winbrans.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        Quadra, Street, Canada
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/2.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Infiniza.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        North Street, California
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/3.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Glovibo.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        Barming Road, UK
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/4.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Bizotic.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        Washington, New York
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/1.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Winbrans.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        Quadra, Street, Canada
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/2.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Infiniza.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        North Street, California
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/3.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Glovibo.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        Barming Road, UK
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/4.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Bizotic.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        Washington, New York
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/1.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Winbrans.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        Quadra, Street, Canada
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/2.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Infiniza.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        North Street, California
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/3.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Glovibo.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        Barming Road, UK
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-                <div class="companies-item">
-                    <img src="{{ asset('frontend/assets/img/home-1/companies/4.png') }}" alt="Companies">
-                    <h3>
-                        <a href="company-details.html">Bizotic.com</a>
-                    </h3>
-                    <p>
-                        <i class="icofont-location-pin"></i>
-                        Washington, New York
-                    </p>
-                    <a class="companies-btn" href="create-account.html">Hiring</a>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="companies-area ptb-100">--}}
+{{--        <div class="container">--}}
+{{--            <div class="section-title">--}}
+{{--                <h2>Popular Companies</h2>--}}
+{{--            </div>--}}
+{{--            <div class="companies-slider owl-theme owl-carousel">--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/1.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Winbrans.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        Quadra, Street, Canada--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/2.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Infiniza.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        North Street, California--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/3.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Glovibo.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        Barming Road, UK--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/4.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Bizotic.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        Washington, New York--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/1.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Winbrans.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        Quadra, Street, Canada--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/2.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Infiniza.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        North Street, California--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/3.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Glovibo.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        Barming Road, UK--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/4.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Bizotic.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        Washington, New York--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/1.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Winbrans.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        Quadra, Street, Canada--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/2.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Infiniza.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        North Street, California--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/3.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Glovibo.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        Barming Road, UK--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--                <div class="companies-item">--}}
+{{--                    <img src="{{ asset('frontend/assets/img/home-1/companies/4.png') }}" alt="Companies">--}}
+{{--                    <h3>--}}
+{{--                        <a href="company-details.html">Bizotic.com</a>--}}
+{{--                    </h3>--}}
+{{--                    <p>--}}
+{{--                        <i class="icofont-location-pin"></i>--}}
+{{--                        Washington, New York--}}
+{{--                    </p>--}}
+{{--                    <a class="companies-btn" href="create-account.html">Hiring</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
 
 {{--    <section class="profile-area ptb-100">--}}

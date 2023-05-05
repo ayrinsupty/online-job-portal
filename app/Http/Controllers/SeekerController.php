@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apply;
+use App\Models\Category;
 use App\Models\SeekerEducation;
 use App\Models\SeekerExperience;
 use App\Models\SeekerExpert;
@@ -135,5 +137,12 @@ class SeekerController extends Controller
             $edu->save();
             return back();
         }
+    }
+
+    public function myJobApplication()
+    {
+        $data['categories'] = Category::all();
+        $data['datas'] = Apply::where('user_id',auth()->id())->get();
+        return view('job-application',$data);
     }
 }

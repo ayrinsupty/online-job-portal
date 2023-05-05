@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->checkOwnPermission('user.view');
+//        $this->checkOwnPermission('user.view');
         $pageHeader = $this->pageHeader;
         $users = User::orderBy('id', 'DESC')->paginate(10);
         return view('backend.pages.users.index', compact('users', 'pageHeader'));
@@ -54,7 +54,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $this->checkOwnPermission('user.create');
+//        $this->checkOwnPermission('user.create');
         $pageHeader = $this->pageHeader;
         $users = User::all();
         return view('backend.pages.users.create', compact('users', 'pageHeader'));
@@ -68,7 +68,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->checkOwnPermission('user.create');
+//        $this->checkOwnPermission('user.create');
         $request->validate([
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
@@ -119,7 +119,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $this->checkOwnPermission('user.edit');
+//        $this->checkOwnPermission('user.edit');
         $pageHeader = $this->pageHeader;
         $users = User::find($id);
         return view('backend.pages.users.edit', compact('users', 'pageHeader'));
@@ -134,7 +134,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->checkOwnPermission('user.edit');
+//        $this->checkOwnPermission('user.edit');
 
         $user = User::find($id);
         $request->validate([
@@ -178,7 +178,7 @@ class UserController extends Controller
 
     public function isActive($id)
     {
-        $this->checkOwnPermission('user.edit');
+//        $this->checkOwnPermission('user.edit');
 
         $data = User::where('id', $id)->first();
         if ($data->status == 'active') {
@@ -200,7 +200,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $this->checkOwnPermission('user.delete');
+//        $this->checkOwnPermission('user.delete');
         $deleteData = User::find($id);
         if (!is_null($deleteData)) {
             if ($deleteData->delete()) {

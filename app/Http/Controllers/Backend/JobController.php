@@ -43,7 +43,7 @@ class JobController extends Controller
     public function index()
     {
         $data['pageHeader'] = $this->pageHeader;
-        $data['datas'] = Job::orderBy('id', 'DESC')->paginate(10);
+        $data['datas'] = Job::where('user_id',auth()->id())->orderBy('id', 'DESC')->paginate(10);
         return view('backend.pages.jobs.index', $data);
     }
 
@@ -168,7 +168,7 @@ class JobController extends Controller
             'description' => 'required',
             'application_last_date' => 'required',
         ]);
-        $row = new Job;
+        $row = Job::find($id);
         $row->user_id = auth()->id();
         $row->category_id = $request->category_id;
         $row->title = $request->title;

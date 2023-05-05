@@ -70,6 +70,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth:web']
     Route::get('users/status/{slug}', [UserController::class, 'isActive'])->name('users.status');
    Route::resource('category', CategoryController::class, ['names' => 'categories']);
     Route::resource('job', JobController::class, ['names' => 'jobs']);
+    Route::get('job-post/{id}', [JobController::class, 'destroy']);
+
     Route::get('/all/apply/{id}', [JobController::class, 'allApply'])->name('all.apply');
     Route::get('/application/view/{jobid}/{userid}', [JobController::class, 'viewApplication'])->name('application.view');
     Route::get('/short-listed/{id}', [JobController::class, 'shortListed'])->name('short.listed');
@@ -87,6 +89,7 @@ Route::get('seeker/ref/delete/{id}',[SeekerController::class,'deleteReference'])
 Route::post('seeker/experience',[SeekerController::class,'addExperience'])->name('add.experience');
 Route::get('seeker/experience/delte/{id}',[SeekerController::class,'deleteExperience'])->name('delete.experience');
 Route::post('user/update',[SeekerController::class,'updateUser'])->name('update.user');
+Route::get('job-application',[SeekerController::class,'myJobApplication'])->name('job.application');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

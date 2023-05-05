@@ -80,31 +80,31 @@
 {{--                @endif--}}
 
                 {{-- Role --}}
-                @if (
-                    $userGuard->can('role.view') ||
-                        $userGuard->can('role.create') ||
-                        $userGuard->can('role.edit') ||
-                        $userGuard->can('role.delete'))
-                    <li class="sidebar-item has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-stack"></i>
-                            <span>Role's</span>
-                        </a>
-                        <ul class="submenu"
-                            {{ Route::is('admin.roles.create') || Route::is('admin.roles.edit') || Route::is('admin.roles.index') ? 'style=display:block;' : '' }}>
-                            <li class="submenu-item ">
-                                @if ($userGuard->can('role.view'))
-                                    <a {{ Route::is('admin.roles.edit') || Route::is('admin.roles.index') ? 'style=color:#435ebe;' : '' }}
-                                       href="{{ route('admin.roles.index') }}">Role's</a>
-                                @endif
-                                @if ($userGuard->can('role.create'))
-                                    <a {{ Route::is('admin.roles.create') ? 'style=color:#435ebe;' : '' }}
-                                       href="{{ route('admin.roles.create') }}">Create Role</a>
-                                @endif
-                            </li>
-                        </ul>
-                    </li>
-                @endif
+{{--                @if (--}}
+{{--                    $userGuard->can('role.view') ||--}}
+{{--                        $userGuard->can('role.create') ||--}}
+{{--                        $userGuard->can('role.edit') ||--}}
+{{--                        $userGuard->can('role.delete'))--}}
+{{--                    <li class="sidebar-item has-sub">--}}
+{{--                        <a href="#" class='sidebar-link'>--}}
+{{--                            <i class="bi bi-stack"></i>--}}
+{{--                            <span>Role's</span>--}}
+{{--                        </a>--}}
+{{--                        <ul class="submenu"--}}
+{{--                            {{ Route::is('admin.roles.create') || Route::is('admin.roles.edit') || Route::is('admin.roles.index') ? 'style=display:block;' : '' }}>--}}
+{{--                            <li class="submenu-item ">--}}
+{{--                                @if ($userGuard->can('role.view'))--}}
+{{--                                    <a {{ Route::is('admin.roles.edit') || Route::is('admin.roles.index') ? 'style=color:#435ebe;' : '' }}--}}
+{{--                                       href="{{ route('admin.roles.index') }}">Role's</a>--}}
+{{--                                @endif--}}
+{{--                                @if ($userGuard->can('role.create'))--}}
+{{--                                    <a {{ Route::is('admin.roles.create') ? 'style=color:#435ebe;' : '' }}--}}
+{{--                                       href="{{ route('admin.roles.create') }}">Create Role</a>--}}
+{{--                                @endif--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
 
 {{--                 Seeker Education --}}
                 @role ('Super Admin')
@@ -227,11 +227,7 @@
 {{--                @endif--}}
 
                 {{-- User --}}
-                @if (
-                    $userGuard->can('user.view') ||
-                        $userGuard->can('user.create') ||
-                        $userGuard->can('user.edit') ||
-                        $userGuard->can('user.delete'))
+                @role ('Super Admin')
                     <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
@@ -251,7 +247,7 @@
                             </li>
                         </ul>
                     </li>
-                @endif
+                @endrole
 
 {{--                <li class="sidebar-title">Raise Support</li>--}}
 
