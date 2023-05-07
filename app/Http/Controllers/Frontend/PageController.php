@@ -42,7 +42,7 @@ class PageController extends Controller
             $apply->user_id = auth()->id();
             $apply->save();
         }
-        return back();
+        return back()->with('success','Application Successfully Accepted');
     }
 
     /**

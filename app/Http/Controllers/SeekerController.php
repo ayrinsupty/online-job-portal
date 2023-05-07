@@ -21,10 +21,10 @@ class SeekerController extends Controller
                 'last_name' => 'required|max:300',
                 'phone' => 'required|max:300',
                 'address' => 'required|max:300',
-                'company_name' => 'required|max:300',
-                'company_email' => 'required|max:300',
-                'company_phone' => 'required|max:300',
-                'office_address' => 'required|max:300',
+//                'company_name' => 'required|max:300',
+//                'company_email' => 'required|max:300',
+//                'company_phone' => 'required|max:300',
+//                'office_address' => 'required|max:300',
             ]);
             $edu = User::find(auth()->id());
             $edu->first_name = $request->first_name;
