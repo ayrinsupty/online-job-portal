@@ -29,36 +29,36 @@
         <div class="container">
             <h2>Login Your Account</h2>
             <div class="login-wrap">
-                <div class="row">
-                    <div class="col-sm-6 col-lg-6">
-                        <div class="jobseeker-item">
-                            <div class="jobseeker-icon">
-                                <i class="flaticon-job-search"></i>
-                            </div>
-                            <div class="jobseeker-inner">
-                                <span>Candidate</span>
-                                <h3>Login as a Candidate</h3>
-                            </div>
-                            <a href="login.html">Get Started
-                                <i class="icofont-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-6">
-                        <div class="jobseeker-item">
-                            <div class="jobseeker-icon">
-                                <i class="flaticon-recruitment"></i>
-                            </div>
-                            <div class="jobseeker-inner">
-                                <span>Employer</span>
-                                <h3>Login as a Employer</h3>
-                            </div>
-                            <a href="login.html">Get Started
-                                <i class="icofont-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="row">--}}
+{{--                    <div class="col-sm-6 col-lg-6">--}}
+{{--                        <div class="jobseeker-item">--}}
+{{--                            <div class="jobseeker-icon">--}}
+{{--                                <i class="flaticon-job-search"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="jobseeker-inner">--}}
+{{--                                <span>Candidate</span>--}}
+{{--                                <h3>Login as a Candidate</h3>--}}
+{{--                            </div>--}}
+{{--                            <a href="login.html">Get Started--}}
+{{--                                <i class="icofont-arrow-right"></i>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-sm-6 col-lg-6">--}}
+{{--                        <div class="jobseeker-item">--}}
+{{--                            <div class="jobseeker-icon">--}}
+{{--                                <i class="flaticon-recruitment"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="jobseeker-inner">--}}
+{{--                                <span>Employer</span>--}}
+{{--                                <h3>Login as a Employer</h3>--}}
+{{--                            </div>--}}
+{{--                            <a href="login.html">Get Started--}}
+{{--                                <i class="icofont-arrow-right"></i>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
 
             @if ($message = Session::get('success'))

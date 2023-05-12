@@ -102,8 +102,8 @@ class JobController extends Controller
     {
         $request->validate([
             'category_id' => 'required',
-            'title' => 'required',
-            'short_description' => 'required',
+            'title' => 'required|max:30',
+            'short_description' => 'required|max:25',
             'description' => 'required',
             'salary' => 'required',
             'type' => 'required',

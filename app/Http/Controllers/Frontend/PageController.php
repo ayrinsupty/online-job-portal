@@ -19,7 +19,11 @@ class PageController extends Controller
         if ($search = (\request()->query('search'))) {
 
             $data['jobs'] = Job::where('application_last_date', '>=', now())->where('title', 'LIKE', '%' .$search . '%')->get();
-        } else {
+        }elseif ($categoryId = (\request()->query('categoryId'))) {
+
+        $data['jobs'] = Job::where('application_last_date', '>=', now())->where('category_id',$categoryId)->get();
+    }
+        else {
             $data['jobs'] = Job::where('application_last_date', '>=', now())->get();
         }
         return view('home', $data);

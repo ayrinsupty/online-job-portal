@@ -74,7 +74,7 @@
                 <div class="col-sm-3 col-lg-3 category-border">
                     <div class="category-item category-two">
                         {{--                        <i class="flaticon-layers"></i>--}}
-                        <a href="#">{{ $category->name }}</a>
+                        <a href="{{ route('home',['categoryId='.$category->id]) }}">{{ $category->name }}</a>
                     </div>
                 </div>
                 @endforeach

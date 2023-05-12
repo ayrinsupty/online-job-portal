@@ -17,10 +17,10 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('category_id');
             $table->string('title');
-            $table->string('short_description');
+            $table->text('short_description');
             $table->string('salary')->nullable();
             $table->string('type')->default(Job::$statusType[1]);
-            $table->string('description');
+            $table->longText('description');
             $table->string('application_last_date');
             $table->string('status')->default(Job::$statusArray[1]);
             $table->timestamps();
