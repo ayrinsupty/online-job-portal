@@ -23,7 +23,8 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach(\App\Models\SeekerEducation::where('user_id',$seeker->id)->get() as $item)
+                            dd
+                            @foreach(\App\Models\SeekerEducation::where('user_id',request()->userid)->get() as $item)
                                 <tr>
                                     <td>{{ $item->institute_name }}</td>
                                     <td>{{ $item->start_date }}</td>
@@ -54,7 +55,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach(\App\Models\SeekerExperience::where('user_id',$seeker->id)->get() as $item)
+                        @foreach(\App\Models\SeekerExperience::where('user_id',request()->userid)->get() as $item)
                             <tr>
                                 <td>{{ $item->company_name }}</td>
                                 <td>{{ $item->designation }}</td>
@@ -81,7 +82,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach(\App\Models\SeekerExpert::where('user_id',$seeker->id)->get() as $item)
+                        @foreach(\App\Models\SeekerExpert::where('user_id',request()->userid)->get() as $item)
                             <tr>
                                 <td>{{ $item->name }}</td>
 
@@ -108,7 +109,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach(\App\Models\SeekerReference::where('user_id',$seeker->id)->get() as $item)
+                        @foreach(\App\Models\SeekerReference::where('user_id',request()->userid)->get() as $item)
                             <tr>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->phone }}</td>

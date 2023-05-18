@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Apply;
+use App\Models\Appointment;
 use App\Models\Category;
 use App\Models\Job;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ class JobController extends Controller
 
         ];
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +45,7 @@ class JobController extends Controller
     public function index()
     {
         $data['pageHeader'] = $this->pageHeader;
-        $data['datas'] = Job::where('user_id',auth()->id())->orderBy('id', 'DESC')->paginate(10);
+        $data['datas'] = Job::where('user_id', auth()->id())->orderBy('id', 'DESC')->paginate(10);
         return view('backend.pages.jobs.index', $data);
     }
 
@@ -62,40 +64,58 @@ class JobController extends Controller
     public function allApply($id)
     {
         $data['pageHeader'] = $this->pageHeader;
-       $data['datas'] = Apply::where('job_id',$id)->orderBy('id', 'DESC')->paginate(10);
-        return view('backend.pages.jobs.all-applies',$data);
+        $data['datas'] = Apply::where('job_id', $id)->orderBy('id', 'DESC')->paginate(10);
+        return view('backend.pages.jobs.all-applies', $data);
     }
+
     public function shortListed($id)
     {
         $data['pageHeader'] = $this->pageHeader;
-       $data['datas'] = Apply::where('job_id',$id)->where('status',\App\Models\Apply::$statusArray[1])->orderBy('id', 'DESC')->paginate(10);
-        return view('backend.pages.jobs.short-listed',$data);
+        $data['datas'] = Apply::where('job_id', $id)->where('status', \App\Models\Apply::$statusArray[1])->orderBy('id', 'DESC')->paginate(10);
+        return view('backend.pages.jobs.short-listed', $data);
     }
+
     public function confirmListed($id)
     {
         $data['pageHeader'] = $this->pageHeader;
-       $data['datas'] = Apply::where('job_id',$id)->where('status',\App\Models\Apply::$statusArray[2])->orderBy('id', 'DESC')->paginate(10);
-        return view('backend.pages.jobs.confirm-listed',$data);
+        $data['datas'] = Apply::where('job_id', $id)->where('status', \App\Models\Apply::$statusArray[2])->orderBy('id', 'DESC')->paginate(10);
+        return view('backend.pages.jobs.confirm-listed', $data);
     }
- public function approveReject($id,$type)
+
+    public function approveReject($id, $type)
     {
         $row = Apply::find($id);
         $row->status = $type;
+//        return $row;
         $row->save();
         return back();
     }
 
-    public function viewApplication($jobid,$userid)
+ public function approvaldelete($id)
+    {
+        $row = Appointment::find($id);
+        $row->delete();
+        return back();
+    }
+ public function approvaldone($id)
+    {
+        $row = Appointment::find($id);
+        $row->status= 'Done';
+        $row->save();
+        return back();
+    }
+
+    public function viewApplication($jobid, $userid)
     {
         $data['pageHeader'] = $this->pageHeader;
-       $data['seeker'] = Apply::where('job_id',$jobid)->where('user_id',$userid)->first();
-        return view('backend.pages.jobs.seeker-cv',$data);
+        $data['seeker'] = Apply::where('job_id', $jobid)->where('user_id', $userid)->first();
+        return view('backend.pages.jobs.seeker-cv', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -128,7 +148,7 @@ class JobController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -139,7 +159,7 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -153,8 +173,8 @@ class JobController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -183,11 +203,30 @@ class JobController extends Controller
             return redirectRouteHelper();
         }
     }
+public function appointmentPost(Request $request,$id)
+{
+$row = new Appointment();
+//    $row->user_id =
+        $row->user_id = $request->user_id;
+        $row->apply_id= $id;
+        $row->link = $request->link;
+        $row->meeting_time = $request->meeting_time;
+        $row->save();
+        return back();
+
+}
+    public function appointmentRequest($id)
+    {
+        $data['pageHeader'] = $this->pageHeader;
+        $data['apply'] = Apply::find($id);
+         $data['appointments'] = Appointment::with('apply','user')->where('apply_id', $id)->get();
+        return view('backend.pages.jobs.appointment',$data);
+    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

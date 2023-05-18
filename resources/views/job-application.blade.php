@@ -64,7 +64,24 @@ My Application
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $data->user->first_name }} {{ $data->user->last_name }}</td>
                                 <td>{{ $data->created_at }}</td>
-                                <td>{{ $data->status }}</td>
+                                <td>
+                                    {{ $data->status }}
+                                        @if($data->status == \App\Models\Apply::$statusArray[1])
+
+                                            @php
+                                                $appointmentinfo = \App\Models\Appointment::where('apply_id',$data->id)->where('user_id',auth()->id())->get();
+                                            @endphp
+                                    @foreach($appointmentinfo as $row)
+                                    <ul style="border: 1px solid black;">
+                                        <li>Meeting time:{{ $row->meeting_time }}</li>
+                                        <li>Meeting link :{{ $row->link }}</li>
+                                        <li>Status :{{ $row->status }}</li>
+                                    </ul>
+                                    @endforeach
+                                    @endif
+
+
+                                </td>
                             </tr>
                         @empty
                             <tr>

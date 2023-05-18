@@ -75,8 +75,12 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth:web']
     Route::get('/all/apply/{id}', [JobController::class, 'allApply'])->name('all.apply');
     Route::get('/application/view/{jobid}/{userid}', [JobController::class, 'viewApplication'])->name('application.view');
     Route::get('/short-listed/{id}', [JobController::class, 'shortListed'])->name('short.listed');
+    Route::get('/appointment/request/{id}', [JobController::class, 'appointmentRequest'])->name('send.appointment.request');
+    Route::post('/appointment/request/{id}', [JobController::class, 'appointmentPost'])->name('send.appointment.request.add');
     Route::get('/confirm-listed/{id}', [JobController::class, 'confirmListed'])->name('confirm.listed');
     Route::get('approval/{id}/{status}', [JobController::class, 'approveReject'])->name('approval.confirmantion');
+    Route::get('approval/delete/{id}', [JobController::class, 'approvaldelete'])->name('approval.delete');
+    Route::get('approval/approval/{id}', [JobController::class, 'approvaldone'])->name('approval.appointment');
     Route::get('admins/status/{slug}', [JobController::class, 'isActive'])->name('jobs.status');
 
 });

@@ -32,7 +32,7 @@
                                     <td>
                                         @if($data->status == \App\Models\Apply::$statusArray[1])
                                             <a class="badge bg-success"
-                                                href="{{ route('admin.approval.confirmantion', [$data->id,\App\Models\Apply::$statusArray[2]]) }}"><i
+                                                href="{{ route('admin.send.appointment.request',$data->id) }}"><i
                                                     class="fas fa-check"></i></a>
                                         <a class="badge bg-danger"
                                                 href="{{ route('admin.approval.confirmantion', [$data->id,\App\Models\Apply::$statusArray[3]]) }}"><i
