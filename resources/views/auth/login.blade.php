@@ -92,7 +92,7 @@
                     <input type="password" name="password" class="form-control" placeholder="Password"/>
                 </div>
                 <div class="login-sign-in">
-                    <a href="#">Forgot Password?</a>
+                    <a href="{{ route('password.request') }}">Forgot Password?</a>
                     <ul>
                         <li>Don’t have an account ?</li>
                         <li>
