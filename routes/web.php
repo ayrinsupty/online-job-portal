@@ -80,7 +80,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth:web']
     Route::get('/confirm-listed/{id}', [JobController::class, 'confirmListed'])->name('confirm.listed');
     Route::get('approval/{id}/{status}', [JobController::class, 'approveReject'])->name('approval.confirmantion');
     Route::get('approval/delete/{id}', [JobController::class, 'approvaldelete'])->name('approval.delete');
-    Route::get('approval/approval/{id}', [JobController::class, 'approvaldone'])->name('approval.appointment');
+    Route::get('approval/{id}', [JobController::class, 'approvaldone'])->name('approval.appointment.old');
     Route::get('admins/status/{slug}', [JobController::class, 'isActive'])->name('jobs.status');
 
 });

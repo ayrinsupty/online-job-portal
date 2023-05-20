@@ -89,7 +89,7 @@
                                 Done
                             @else
                             <a class="badge bg-success"
-                               href="{{ route('admin.approval.appointment', $appointment->id) }}"><i
+                               href="{{ route('admin.approval.appointment.old', $appointment->id) }}"><i
                                     class="fas fa-check"></i></a>
                             @endif
                             <a class="badge bg-danger"
@@ -100,7 +100,7 @@
                                 Done
                             @else
                                 <a class="badge bg-success"
-                                   href="{{ route('admin.approval.appointment', $appointment->id) }}"><i
+                                   href="{{ route('admin.approval.appointment.old', $appointment->id) }}"><i
                                         class="fas fa-check"></i></a>
                             @endif
                         @endif

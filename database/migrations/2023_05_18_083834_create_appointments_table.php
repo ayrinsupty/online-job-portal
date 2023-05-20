@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('apply_id');
             $table->longText('link');
             $table->timestamp('meeting_time');
+            $table->string('status')->default("Pending");
             $table->timestamps();
         });
     }
