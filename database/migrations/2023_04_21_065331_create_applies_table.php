@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('job_id');
+            $table->integer('expect_salary')->nullable();
             $table->string('status')->default(Apply::$statusArray[0]);
             $table->timestamps();
         });

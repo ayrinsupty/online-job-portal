@@ -14,6 +14,8 @@ class SeekerEducation extends Model
         'institute_name',
         'start_date',
         'end_date',
+        'cgpa',
+        'department',
     ];
 
     public function user(){

@@ -36,13 +36,14 @@ class PageController extends Controller
         return view('job-details', $data);
     }
 
-    public function apply($id)
+    public function apply(Request $request,$id)
     {
         if (Apply::where('user_id', auth()->id())->where('job_id', $id)->first()) {
         } else {
             $apply = new Apply();
             $apply->user_id = auth()->id();
             $apply->job_id = $id;
+            $apply->expect_salary = $request->expect_salary;
             $apply->user_id = auth()->id();
             $apply->save();
         }

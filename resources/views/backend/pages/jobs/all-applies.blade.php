@@ -16,6 +16,7 @@
                             <tr>
                                 <th>Sl</th>
                                 <th>Applicant</th>
+                                <th>Expect Salary</th>
                                 <th>Apply at</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -27,6 +28,7 @@
                                 <tr id="table-data{{ $data->id }}">
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $data->user->first_name }} {{ $data->user->last_name }}</td>
+                                    <td>{{ $data->expect_salary }}</td>
                                     <td>{{ $data->created_at }}</td>
                                     <td>{{ $data->status }}</td>
                                     <td>

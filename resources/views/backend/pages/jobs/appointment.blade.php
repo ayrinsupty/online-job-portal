@@ -61,6 +61,8 @@
             @else
             <a class="badge bg-success"
                href="{{ route('admin.approval.confirmantion', [request()->id,\App\Models\Apply::$statusArray[2]]) }}">Confirm Sicker</a>
+            <a class="badge bg-danger"
+               href="{{ route('admin.approval.confirmantion', [request()->id,\App\Models\Apply::$statusArray[3]]) }}">Reject Sicker</a>
             @endif
         </section>
 

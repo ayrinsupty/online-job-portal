@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('institute_name');
             $table->date('start_date');
             $table->date('end_date')->nullable();
+            $table->string('cgpa')->nullable();
+            $table->string('department')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

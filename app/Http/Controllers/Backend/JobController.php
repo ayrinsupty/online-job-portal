@@ -88,7 +88,7 @@ class JobController extends Controller
         $row->status = $type;
 //        return $row;
         $row->save();
-        return back();
+        return redirect()->route('admin.all.apply',$id);
     }
 
  public function approvaldelete($id)
@@ -125,7 +125,7 @@ class JobController extends Controller
             'title' => 'required|max:30',
             'short_description' => 'required|max:25',
             'description' => 'required',
-            'salary' => 'required',
+            'salary' => 'nullable',
             'type' => 'required',
             'application_last_date' => 'required',
         ]);
@@ -182,7 +182,7 @@ class JobController extends Controller
         $request->validate([
             'category_id' => 'required',
             'title' => 'required',
-            'salary' => 'required',
+            'salary' => 'nullable',
             'type' => 'required',
             'short_description' => 'required',
             'description' => 'required',

@@ -181,6 +181,8 @@
                                 <th>Institute Name</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
+                                <th>CGPA</th>
+                                <th>Dept.</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -190,21 +192,26 @@
                                     <td>{{ $item->institute_name }}</td>
                                     <td>{{ $item->start_date }}</td>
                                     <td>{{ $item->end_date }}</td>
+                                    <td>{{ $item->cgpa }}</td>
+                                    <td>{{ $item->department }}</td>
                                     <td>
-                                        <a href="">Edit</a>
-                                        <a href="{{ route('delete.education',$item->id) }}">Delete</a>
+                                        <a style="background: none;color: green;" href="{{ route('dashboard',['education='.$item->id]) }}">Edit</a>
+                                        <a style="background: none;color: green;" href="{{ route('delete.education',$item->id) }}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </div>
+                    @php
+                        $ins = \App\Models\SeekerEducation::find(request('education'));
+                    @endphp
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="institute_name">Institute Name</label>
                                 <input type="text" name="institute_name"
-                                       class="form-control @error('institute_name') is-invalid @enderror"/>
+                                       class="form-control" value="{{ old('institute_name',$ins->institute_name ?? "") }}" @error('institute_name') is-invalid @enderror"/>
                                 @error('institute_name')
                                 <strong class="text-danger">{{ $errors->first('institute_name') }}</strong>
                                 @enderror
@@ -213,7 +220,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Start Date</label>
-                                <input type="date" name="start_date"
+                                <input type="date" name="start_date" value="{{ old('start_date',$ins->start_date ?? "") }}"
                                        class="form-control @error('start_date') is-invalid @enderror"/>
                                 @error('start_date')
                                 <strong class="text-danger">{{ $errors->first('start_date') }}</strong>
@@ -223,12 +230,33 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>End Date</label>
-                                <input type="date" name="end_date"
+                                <input type="date" name="end_date" value="{{ old('end_date',$ins->end_date ?? "") }}"
                                        class="form-control @error('end_date') is-invalid @enderror"/>
                                 @error('end_date')
                                 <strong class="text-danger">{{ $errors->first('end_date') }}</strong>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>CGPA</label>
+                                <input type="number" name="cgpa" value="{{ old('cgpa',$ins->cgpa ?? "") }}"
+                                       class="form-control @error('cgpa') is-invalid @enderror"/>
+                                @error('cgpa')
+                                <strong class="text-danger">{{ $errors->first('cgpa') }}</strong>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Department</label>
+                                <input type="text" name="department" value="{{ old('department',$ins->department ?? "") }}"
+                                       class="form-control @error('department') is-invalid @enderror"/>
+                                @error('department')
+                                <strong class="text-danger">{{ $errors->first('department') }}</strong>
+                                @enderror
+                            </div>
+                            <input type="hidden" name="id" value="{{ old('id',$ins->id ?? "") }}">
                         </div>
                     </div>
                     <div class="text-left">
@@ -261,7 +289,7 @@
                                     <td>{{ $item->from_date }}</td>
                                     <td>{{ $item->to_date }}</td>
                                     <td>
-                                        <a href="">Edit</a>
+                                        <a href="{{ route('dashboard',['experience='.$item->id]) }}">Edit</a>
                                         <a href="{{ route('delete.experience',$item->id) }}">Delete</a>
                                     </td>
                                 </tr>
@@ -270,13 +298,16 @@
                         </table>
                     </div>
                 </div>
+                @php
+                    $exp = \App\Models\SeekerExperience::find(request('experience'));
+                @endphp
                 <form method="post" action="{{ route('add.experience') }}">
                     @csrf
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Company Name</label>
-                                <input type="text" name="company_name"
+                                <input type="text" name="company_name" value="{{ old('company_name',$exp->company_name ?? "") }}"
                                        class="form-control @error('company_name') is-invalid @enderror"/>
                                 @error('company_name')
                                 <strong class="text-danger">{{ $errors->first('company_name') }}</strong>
@@ -286,7 +317,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Designation</label>
-                                <input type="text" name="designation"
+                                <input type="text" name="designation" value="{{ old('designation',$exp->designation ?? "") }}"
                                        class="form-control @error('designation') is-invalid @enderror"/>
                                 @error('designation')
                                 <strong class="text-danger">{{ $errors->first('designation') }}</strong>
@@ -296,7 +327,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>From Date</label>
-                                <input type="date" name="from_date"
+                                <input type="date" name="from_date" value="{{ old('from_date',$exp->from_date ?? "") }}"
                                        class="form-control @error('from_date') is-invalid @enderror"/>
                                 @error('from_date')
                                 <strong class="text-danger">{{ $errors->first('from_date') }}</strong>
@@ -306,12 +337,13 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>To Date</label>
-                                <input type="date" name="to_date"
+                                <input type="date" name="to_date" value="{{ old('to_date',$exp->to_date ?? "") }}"
                                        class="form-control @error('to_date') is-invalid @enderror"/>
                                 @error('to_date')
                                 <strong class="text-danger">{{ $errors->first('to_date') }}</strong>
                                 @enderror
                             </div>
+                            <input type="hidden" name="id" value="{{ old('id',$exp->id ?? "") }}">
                         </div>
                     </div>
                     <div class="text-left">
@@ -396,7 +428,7 @@
                                     <td>{{ $item->occupation }}</td>
                                     <td>{{ $item->designation }}</td>
                                     <td>
-                                        <a href="">Edit</a>
+                                        <a href="{{ route('dashboard',['reference='.$item->id]) }}">Edit</a>
                                         <a href="{{ route('delete.reference',$item->id) }}">Delete</a>
                                     </td>
                                 </tr>
@@ -405,13 +437,16 @@
                         </table>
                     </div>
                 </div>
+                @php
+                    $ref = \App\Models\SeekerReference::find(request('reference'));
+                @endphp
                 <form action="{{ route('add.reference') }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>name</label>
-                                <input type="text" name="name"
+                                <input type="text" name="name" value="{{ old('name',$ref->name ?? "") }}"
                                        class="form-control @error('name') is-invalid @enderror"/>
                                 @error('name')
                                 <strong class="text-danger">{{ $errors->first('name') }}</strong>
@@ -421,7 +456,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>phone</label>
-                                <input type="tel" name="phone"
+                                <input type="tel" name="phone" value="{{ old('phone',$ref->phone ?? "") }}"
                                        class="form-control @error('phone') is-invalid @enderror"/>
                                 @error('phone')
                                 <strong class="text-danger">{{ $errors->first('phone') }}</strong>
@@ -431,7 +466,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>occupation</label>
-                                <input type="text" name="occupation"
+                                <input type="text" name="occupation" value="{{ old('occupation',$ref->occupation ?? "") }}"
                                        class="form-control @error('occupation') is-invalid @enderror"/>
                                 @error('occupation')
                                 <strong class="text-danger">{{ $errors->first('occupation') }}</strong>
@@ -441,13 +476,14 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>designation</label>
-                                <input type="text" name="designation"
+                                <input type="text" name="designation" value="{{ old('designation',$ref->designation ?? "") }}"
                                        class="form-control @error('designation') is-invalid @enderror"/>
                                 @error('designation')
                                 <strong class="text-danger">{{ $errors->first('designation') }}</strong>
                                 @enderror
                             </div>
                         </div>
+                        <input type="hidden" name="id" value="{{ old('id',$ref->id ?? "") }}">
                     </div>
                     <div class="text-left">
                         <button type="submit" name="reference" class="btn create-ac-btn">Save</button>

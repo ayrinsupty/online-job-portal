@@ -23,7 +23,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            dd
                             @foreach(\App\Models\SeekerEducation::where('user_id',request()->userid)->get() as $item)
                                 <tr>
                                     <td>{{ $item->institute_name }}</td>

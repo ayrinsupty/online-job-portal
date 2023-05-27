@@ -30,8 +30,6 @@
                         <p>{{ date('Y') }} &copy; </p>
                     </div>
                     <div class="float-end">
-{{--                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a--}}
-{{--                                href="https://dreammakesoft.com/">Dream Make Soft</a></p>--}}
                     </div>
                 </div>
             </footer>

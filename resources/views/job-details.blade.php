@@ -15,20 +15,21 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <input type="text" name="search" class="form-control" placeholder="Job Title">
+                                            <input type="text" name="search" class="form-control"
+                                                   placeholder="Job Title">
                                             <label>
                                                 <i class="icofont-search-1"></i>
                                             </label>
                                         </div>
                                     </div>
-{{--                                    <div class="col-lg-6">--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <label>--}}
-{{--                                                <i class="icofont-location-pin"></i>--}}
-{{--                                            </label>--}}
-{{--                                            <input type="text" class="form-control" placeholder="City or State">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    {{--                                    <div class="col-lg-6">--}}
+                                    {{--                                        <div class="form-group">--}}
+                                    {{--                                            <label>--}}
+                                    {{--                                                <i class="icofont-location-pin"></i>--}}
+                                    {{--                                            </label>--}}
+                                    {{--                                            <input type="text" class="form-control" placeholder="City or State">--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </div>--}}
                                 </div>
                                 <button type="submit" class="btn banner-form-btn">Search</button>
                             </form>
@@ -145,7 +146,7 @@
                     <div class="col-md-12">
                         <ol>
                             <li><strong>Category : </strong>{{ $jobDetails->category->name }}</li>
-                            <li><strong>Salary : </strong>{{ $jobDetails->salary }}</li>
+                            <li><strong>Salary : </strong>{{ ($jobDetails->salary>0) ? $jobDetails->salary : "Negotiable"  }}</li>
                             <li><strong>Job Type : </strong>{{ $jobDetails->type }}</li>
                             <li><strong>Application last Date : </strong>{{ $jobDetails->application_last_date }}</li>
                         </ol>
@@ -167,7 +168,28 @@
                         @endforeach
                         @if($userId)
                         @else
-                            <a href="{{ route('apply',$jobDetails->id) }}">Apply</a>
+                            <form method="post" action="{{ route('apply',$jobDetails->id) }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Salary Expectation</label>
+                                            <input type="number" name="expect_salary"
+                                                   class="form-control @error('expect_salary') is-invalid @enderror"/>
+                                            @error('expect_salary')
+                                            <strong class="text-danger">{{ $errors->first('expect_salary') }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    @role('Agent')
+                                    @else
+                                <button class="btn btn-success mt-3">Apply</button>
+                                        @endrole
+                                </div>
+                            </form>
+                            {{--                            <a href="{{ route('apply',$jobDetails->id) }}">Apply</a>--}}
                         @endif
                     </div>
                 </div>

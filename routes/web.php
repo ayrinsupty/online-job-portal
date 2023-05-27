@@ -54,7 +54,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
 */
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/job/{id}', [PageController::class, 'jobDetails'])->name('job.details');
-Route::get('/apply/{id}', [PageController::class, 'apply'])->name('apply')->middleware('auth');
+Route::post('/apply/{id}', [PageController::class, 'apply'])->name('apply')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +94,7 @@ Route::post('seeker/experience',[SeekerController::class,'addExperience'])->name
 Route::get('seeker/experience/delte/{id}',[SeekerController::class,'deleteExperience'])->name('delete.experience');
 Route::post('user/update',[SeekerController::class,'updateUser'])->name('update.user');
 Route::get('job-application',[SeekerController::class,'myJobApplication'])->name('job.application');
+Route::get('company-details/{id}',[SeekerController::class,'companydetails'])->name('company');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

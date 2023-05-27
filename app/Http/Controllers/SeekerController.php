@@ -11,6 +11,7 @@ use App\Models\SeekerReference;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+
 class SeekerController extends Controller
 {
     public function updateUser(Request $request)
@@ -37,35 +38,46 @@ class SeekerController extends Controller
             $edu->office_address = $request->office_address;
             if (!empty($request->logo)) {
                 $edu->logo = imageUpload($request->logo, 'Logo');
-            }if (!empty($request->image)) {
+            }
+            if (!empty($request->image)) {
                 $edu->image = imageUpload($request->image, 'Image');
             }
             $edu->save();
             return back();
         }
     }
+
     public function addEducation(Request $request)
     {
         if ($request->has('education')) {
             $request->validate([
-                'institute_name' => 'required|max:300',
+                'institute_name' => 'required|max:100',
                 'start_date' => 'required|date',
-                'end_date' => 'nullable|date'
+                'end_date' => 'nullable|date',
+                'cgpa' => 'nullable',
+                'department' => 'required'
             ]);
-            $edu = new SeekerEducation();
-            $edu->user_id = auth()->id();
+            if (($request->id) == null) {
+                $edu = new SeekerEducation();
+                $edu->user_id = auth()->id();
+            } else {
+                $edu = SeekerEducation::find($request->id);
+            }
             $edu->institute_name = $request->institute_name;
             $edu->start_date = $request->start_date;
             $edu->end_date = $request->end_date;
+            $edu->cgpa = $request->cgpa;
+            $edu->department = $request->department;
             $edu->save();
             return back();
         }
     }
+
     public function deleteEducation($id)
     {
-            $edu = SeekerEducation::find($id);
-            $edu->delete();
-            return back();
+        $edu = SeekerEducation::find($id);
+        $edu->delete();
+        return back();
     }
 
     public function addSkill(Request $request)
@@ -81,6 +93,7 @@ class SeekerController extends Controller
             return back();
         }
     }
+
     public function deleteSkill($id)
     {
         $edu = SeekerExpert::find($id);
@@ -97,7 +110,12 @@ class SeekerController extends Controller
                 'occupation' => 'required',
                 'designation' => 'required',
             ]);
-            $edu = new SeekerReference();
+            if (($request->id) == null) {
+                $edu = new SeekerReference();
+                $edu->user_id = auth()->id();
+            } else {
+                $edu = SeekerReference::find($request->id);
+            }
             $edu->user_id = auth()->id();
             $edu->name = $request->name;
             $edu->phone = $request->phone;
@@ -107,18 +125,21 @@ class SeekerController extends Controller
             return back();
         }
     }
+
     public function deleteReference($id)
     {
         $edu = SeekerReference::find($id);
         $edu->delete();
         return back();
     }
+
     public function deleteExperience($id)
     {
         $edu = SeekerExperience::find($id);
         $edu->delete();
         return back();
     }
+
     public function addExperience(Request $request)
     {
         if ($request->has('experience')) {
@@ -128,8 +149,12 @@ class SeekerController extends Controller
                 'from_date' => 'required|date',
                 'to_date' => 'nullable|date',
             ]);
-            $edu = new SeekerExperience();
-            $edu->user_id = auth()->id();
+            if (($request->id) == null) {
+                $edu = new SeekerExperience();
+                $edu->user_id = auth()->id();
+            } else {
+                $edu = SeekerExperience::find($request->id);
+            }
             $edu->company_name = $request->company_name;
             $edu->designation = $request->designation;
             $edu->from_date = $request->from_date;
@@ -142,7 +167,12 @@ class SeekerController extends Controller
     public function myJobApplication()
     {
         $data['categories'] = Category::all();
-        $data['datas'] = Apply::where('user_id',auth()->id())->get();
-        return view('job-application',$data);
+        $data['datas'] = Apply::with('job','job.user')->where('user_id', auth()->id())->get();
+        return view('job-application', $data);
+    }
+    public function companydetails($id)
+    {
+        $data['company'] = User::find($id);
+        return view('company-details',$data);
     }
 }

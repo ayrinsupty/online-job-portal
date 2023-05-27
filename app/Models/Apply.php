@@ -13,6 +13,7 @@ class Apply extends Model
     protected $fillable = [
         'user_id',
         'job_id',
+        'expect_salary',
         'status'
     ];
     public static $statusArray = ['pending','short-listed','approved','reject'];
