@@ -22,7 +22,13 @@
                         @auth
                             @role('Seeker')
                             <li class="nav-item">
-                                <a href="{{ route('job.application') }}" class="nav-link">My Application</a>
+                                <a href="{{ route('job.application') }}" class="nav-link">My Application (
+                                  @php
+                                    $count = App\Models\Apply::where('user_id', auth()->id())
+                                          ->whereNotIn('status', [App\Models\Apply::$statusArray[2], App\Models\Apply::$statusArray[3]])
+                                          ->count();
+                                  echo $count;
+                                  @endphp )</a>
                             </li>
                             @else
                             <li class="nav-item">

@@ -45,7 +45,9 @@ class JobController extends Controller
     public function index()
     {
         $data['pageHeader'] = $this->pageHeader;
-        $data['datas'] = Job::where('user_id', auth()->id())->orderBy('id', 'DESC')->paginate(10);
+        $data['datas'] = Job::withCount(['applicant' => function ($query) {
+            $query->where('status', 'pending');
+        }])->where('user_id', auth()->id())->orderBy('id', 'DESC')->paginate(10);
         return view('backend.pages.jobs.index', $data);
     }
 

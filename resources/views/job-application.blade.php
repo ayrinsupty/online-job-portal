@@ -64,7 +64,7 @@ My Application
                             <tr id="table-data{{ $data->id }}">
                                 <td>{{ $loop->index + 1 }}</td>
 {{--                                <td>{{ $data->user->first_name }} {{ $data->user->last_name }}</td>--}}
-                                <td><a href="{{ route('job.details',$data->job_id) }}">{{ $data->job->title }}</a></td>
+                                <td><a href="{{ route('job.details',$data->job_id) }}">{{ $data->job->title }} </a></td>
                                 <td><a href="{{ route('company',$data->job->user_id) }}">{{ $data->job->user->company_name }}</a></td>
                                 <td>{{ $data->created_at }}</td>
                                 <td>

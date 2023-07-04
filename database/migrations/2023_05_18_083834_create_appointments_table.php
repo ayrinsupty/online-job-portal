@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('link');
             $table->timestamp('meeting_time');
             $table->string('status')->default("Pending");
+            $table->string('is_read')->default("no");
             $table->timestamps();
         });
     }

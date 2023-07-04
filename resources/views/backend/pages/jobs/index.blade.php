@@ -32,7 +32,7 @@
                                                     class="fas fa-edit"></i></a>
                                         <a class="badge bg-info"
                                                 href="{{ route('admin.all.apply',$data->id) }}"><i
-                                                    class="fas fa-book"></i></a>
+                                                    class="fas fa-book"></i>({{ $data->applicant_count }})</a>
                                             <a class="badge bg-danger" href="javascript:void(0)"
                                                 onclick="dataDelete({{ $data->id }},'job-post')"><i
                                                     class="fas fa-trash"></i></a>
