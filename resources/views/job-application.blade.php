@@ -55,6 +55,7 @@ My Application
                             <th>Title</th>
                             <th>Company</th>
                             <th>Last Date</th>
+                            <th>Salary</th>
                             <th>Action</th>
 
                         </tr>
@@ -67,6 +68,7 @@ My Application
                                 <td><a href="{{ route('job.details',$data->job_id) }}">{{ $data->job->title }} </a></td>
                                 <td><a href="{{ route('company',$data->job->user_id) }}">{{ $data->job->user->company_name }}</a></td>
                                 <td>{{ $data->created_at }}</td>
+                                <td>{{ ($data->job->salary === null) ? 'Negotiation' : $data->job->salary .' Taka' }}</td>
                                 <td>
                                     {{ $data->status }}
                                         @if($data->status == \App\Models\Apply::$statusArray[1])

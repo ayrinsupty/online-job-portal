@@ -90,7 +90,7 @@ class JobController extends Controller
         $row->status = $type;
 //        return $row;
         $row->save();
-        return redirect()->route('admin.all.apply',$id);
+        return redirect()->route('admin.all.apply',$row->job_id);
     }
 
  public function approvaldelete($id)

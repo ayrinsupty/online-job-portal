@@ -54,7 +54,7 @@ class SeekerController extends Controller
                 'institute_name' => 'required|max:100',
                 'start_date' => 'required|date',
                 'end_date' => 'nullable|date',
-                'cgpa' => 'nullable',
+                'cgpa' => 'nullable|numeric|between:0,4',
                 'department' => 'required'
             ]);
             if (($request->id) == null) {

@@ -240,7 +240,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>CGPA</label>
-                                <input type="number" name="cgpa" value="{{ old('cgpa',$ins->cgpa ?? "") }}"
+                                <input type="number" step=".1" name="cgpa" value="{{ old('cgpa',$ins->cgpa ?? "") }}"
                                        class="form-control @error('cgpa') is-invalid @enderror"/>
                                 @error('cgpa')
                                 <strong class="text-danger">{{ $errors->first('cgpa') }}</strong>
