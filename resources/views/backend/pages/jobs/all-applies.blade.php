@@ -39,6 +39,9 @@
                                             <a class="badge bg-info"
                                                 href="{{ route('admin.approval.confirmantion', [$data->id,\App\Models\Apply::$statusArray[1]]) }}"><i
                                                     class="fas fa-check"></i></a>
+                                            <a class="badge bg-danger"
+                                               href="{{ route('admin.approval.confirmantion', [$data->id,\App\Models\Apply::$statusArray[3]]) }}"><i
+                                                    class="fas fa-ban"></i></a>
                                         @elseif($data->status == \App\Models\Apply::$statusArray[1])
                                         <a class="badge bg-danger"
                                                 href="{{ route('admin.approval.confirmantion', [$data->id,\App\Models\Apply::$statusArray[3]]) }}"><i
