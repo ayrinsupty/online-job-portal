@@ -41,6 +41,7 @@ class PageController extends Controller
     public function apply(Request $request, $id)
     {
         if (Apply::where('user_id', auth()->id())->where('job_id', $id)->first()) {
+            return back()->with('error', 'Application Already Accepted');
         } else {
             if (auth()->user()->image == null) {
                 return redirect()->route('dashboard')->with('error', 'Please upload your image');
@@ -61,51 +62,4 @@ class PageController extends Controller
         return back()->with('success', 'Application Successfully Accepted');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

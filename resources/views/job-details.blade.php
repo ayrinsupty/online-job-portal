@@ -74,7 +74,7 @@
                     <div class="col-sm-3 col-lg-3 category-border">
                         <div class="category-item category-two">
                             {{--                        <i class="flaticon-layers"></i>--}}
-                            <a href="#">{{ $category->name }}</a>
+                            <a href="{{ route('home',['categoryId='.$category->id]) }}">{{ $category->name }}</a>
                         </div>
                     </div>
                 @endforeach
@@ -82,36 +82,6 @@
             </div>
         </div>
     </section>
-
-    {{--    <div class="account-area account-area-two">--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="row account-wrap">--}}
-    {{--                <div class="col-sm-6 col-lg-4">--}}
-    {{--                    <div class="account-item">--}}
-    {{--                        <i class="flaticon-approved"></i>--}}
-    {{--                        <span>Register Your Account</span>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <div class="col-sm-6 col-lg-4">--}}
-    {{--                    <div class="account-item">--}}
-    {{--                        <i class="flaticon-cv"></i>--}}
-    {{--                        <span>Upload Your Resume</span>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <div class="col-sm-6 offset-sm-3 offset-lg-0 col-lg-4">--}}
-    {{--                    <div class="account-item account-last">--}}
-    {{--                        <i class="flaticon-customer-service"></i>--}}
-    {{--                        <span>Apply for Dream Job</span>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="banner-btn">--}}
-    {{--                <a href="create-account.html">Create Your Profile</a>--}}
-    {{--                <a href="submit-resume.html">Upload Your CV</a>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-
 
     <section class="job-area ptb-100">
 
@@ -167,6 +137,7 @@
                             @endif
                         @endforeach
                         @if($userId)
+                            <p class="text-danger">Already Applied</p>
                         @else
                             <form method="post" action="{{ route('apply',$jobDetails->id) }}">
                                 @csrf
@@ -184,8 +155,9 @@
                                 </div>
                                 <div class="col-md-12 text-center">
                                     @role('Agent')
+                                    <p class="text-danger">You Can not apply</p>
                                     @else
-                                <button class="btn btn-success mt-3">Apply</button>
+                                        <button class="btn btn-success mt-3">Apply</button>
                                         @endrole
                                 </div>
                             </form>

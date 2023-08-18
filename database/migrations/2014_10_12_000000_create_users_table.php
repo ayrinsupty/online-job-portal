@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->text('address');
+            $table->text('linkedin');
             $table->string('password');
             $table->string('image')->nullable();
             $table->string('company_name')->nullable();

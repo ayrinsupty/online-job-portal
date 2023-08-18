@@ -20,7 +20,7 @@ class SeekerController extends Controller
             $request->validate([
                 'first_name' => 'required|max:300',
                 'last_name' => 'required|max:300',
-                'phone' => 'required|max:300',
+                'phone' => 'required|max:11',
                 'address' => 'required|max:300',
             ]);
             $edu = User::find(auth()->id());
@@ -50,7 +50,7 @@ class SeekerController extends Controller
             $request->validate([
                 'institute_name' => 'required|max:100',
                 'start_date' => 'required|date',
-                'end_date' => 'nullable|date',
+                'end_date' => 'nullable|date|after_or_equal:start_date',
                 'cgpa' => 'nullable|numeric|between:0,4',
                 'department' => 'required'
             ]);
@@ -144,7 +144,7 @@ class SeekerController extends Controller
                 'company_name' => 'required|max:200',
                 'designation' => 'required',
                 'from_date' => 'required|date',
-                'to_date' => 'nullable|date',
+                'to_date' => 'nullable|date|after_or_equal:from_date',
             ]);
             if (($request->id) == null) {
                 $edu = new SeekerExperience();
