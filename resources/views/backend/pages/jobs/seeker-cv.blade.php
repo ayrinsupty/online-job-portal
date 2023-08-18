@@ -8,8 +8,17 @@
         <!-- Basic Tables start -->
         <section class="section">
             <div class="card">
-                <div class="card-header">All Applicants</div>
+                <div class="card-header"></div>
                 <div class="card-body">
+                    <h3>Bio</h3>
+                    <img style="width: 140px;" src="{{ asset('images/' . $seeker->user->image) }}" alt="">
+                    <ul>
+                        <li><strong>Name :</strong>{{ $seeker->user->first_name }} {{ $seeker->user->last_name }}</li>
+                        <li><strong>Email :</strong>{{ $seeker->user->email }}</li>
+                        <li><strong>Phone :</strong>{{ $seeker->user->phone }}</li>
+                        <li><strong>Address :</strong>{{ $seeker->user->address }}</li>
+                        <li><strong>LinkedIn :</strong>{{ $seeker->user->linkedin }}</li>
+                    </ul>
                     <h3>Education</h3>
                     <div class="create-information-btn">
                         {{--                        <a href="#">Upload Cover Photo</a>--}}

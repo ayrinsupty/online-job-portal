@@ -108,6 +108,14 @@
                                         <strong class="text-danger">{{ $errors->first('address') }}</strong>
                                         @enderror
                                     </div>
+                                    <div class="form-group">
+                                        <input type="text" value="{{ auth()->user()->linkedin }}" name="linkedin"
+                                               class="form-control  @error('linkedin') is-invalid @enderror"
+                                               placeholder="LinkedIn"/>
+                                        @error('linkedin')
+                                        <strong class="text-danger">{{ $errors->first('linkedin') }}</strong>
+                                        @enderror
+                                    </div>
                                     @role('Agent')
                                     <div class="form-group">
                                         <input type="text" value="{{ auth()->user()->company_name }}"
