@@ -21,7 +21,7 @@
                                             <label for="title">Title</label>
                                             <input type="text" name="title"
                                                    class="form-control @error('title') is-invalid @enderror" id="title"
-                                                   placeholder="Enter Name" value="{{ old('title') }}">
+                                                   placeholder="Enter Title" value="{{ old('title') }}">
                                             @error('title')
                                             <strong class="text-danger">{{ $errors->first('title') }}</strong>
                                             @enderror
@@ -78,7 +78,7 @@
                                             </select>
 
                                             @error('salary')
-                                            <strong class="text-danger">{{ $errors->first('salary') }}</strong>
+                                            <strong class="text-danger">{{ $errors->first('type') }}</strong>
                                             @enderror
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
                                             <input type="text" name="short_description"
                                                    class="form-control @error('short_description') is-invalid @enderror"
                                                    id="short_description"
-                                                   placeholder="Enter Name" value="{{ old('short_description') }}">
+                                                   placeholder="Enter hort Description" value="{{ old('short_description') }}">
                                             @error('short_description')
                                             <strong class="text-danger">{{ $errors->first('short_description') }}</strong>
                                             @enderror

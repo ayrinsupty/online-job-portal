@@ -27,6 +27,8 @@
                             <thead>
                             <tr>
                                 <th>Institute Name</th>
+                                <th>Department</th>
+                                <th>CGPA</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                             </tr>
@@ -35,6 +37,8 @@
                             @foreach(\App\Models\SeekerEducation::where('user_id',request()->userid)->get() as $item)
                                 <tr>
                                     <td>{{ $item->institute_name }}</td>
+                                    <td>{{ $item->department }}</td>
+                                    <td>{{ $item->cgpa }}</td>
                                     <td>{{ $item->start_date }}</td>
                                     <td>{{ $item->end_date }}</td>
 

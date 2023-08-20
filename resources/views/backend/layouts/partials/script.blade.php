@@ -51,7 +51,7 @@
                 })
                 $.ajax({
                     url: url_base_name + "/" + id,
-                    type: "GET",
+                    type: "DELETE",
                     data: {
                         _token: $("input[name=_token]").val()
                     },
@@ -62,6 +62,11 @@
                                 title: 'Successfully Deleted'
                             })
                             $("#table-data" + id).remove();
+                        } elseif(response.status == 400) {
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'You are already logged in'
+                            })
                         } else {
                             Toast.fire({
                                 icon: 'error',

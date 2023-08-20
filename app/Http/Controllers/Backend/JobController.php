@@ -124,8 +124,8 @@ class JobController extends Controller
     {
         $request->validate([
             'category_id' => 'required',
-            'title' => 'required|max:30',
-            'short_description' => 'required|max:25',
+            'title' => 'required|max:50',
+            'short_description' => 'required|max:60',
             'description' => 'required',
             'salary' => 'nullable',
             'type' => 'required',
@@ -183,11 +183,11 @@ class JobController extends Controller
     {
         $request->validate([
             'category_id' => 'required',
-            'title' => 'required',
+            'title' => 'required|max:50',
+            'short_description' => 'required|max:60',
+            'description' => 'required',
             'salary' => 'nullable',
             'type' => 'required',
-            'short_description' => 'required',
-            'description' => 'required',
             'application_last_date' => 'required',
         ]);
         $row = Job::find($id);

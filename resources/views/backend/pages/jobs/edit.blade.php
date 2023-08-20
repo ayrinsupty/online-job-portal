@@ -79,7 +79,7 @@
                                             </select>
 
                                             @error('salary')
-                                            <strong class="text-danger">{{ $errors->first('salary') }}</strong>
+                                            <strong class="text-danger">{{ $errors->first('type') }}</strong>
                                             @enderror
                                         </div>
                                     </div>

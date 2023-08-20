@@ -201,6 +201,9 @@ class UserController extends Controller
     public function destroy($id)
     {
 //        $this->checkOwnPermission('user.delete');
+        if (auth()->id() == $id){
+            return response()->json(['status' => 400,]);
+        }else{
         $deleteData = User::find($id);
         if (!is_null($deleteData)) {
             if ($deleteData->delete()) {
@@ -208,6 +211,7 @@ class UserController extends Controller
             } else {
                 return response()->json(['status' => 422,]);
             }
+        }
         }
     }
 }
