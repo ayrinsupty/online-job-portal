@@ -62,12 +62,13 @@
                                 title: 'Successfully Deleted'
                             })
                             $("#table-data" + id).remove();
-                        } elseif(response.status == 400) {
+                        }else if(response.status == 400) {
                             Toast.fire({
                                 icon: 'error',
                                 title: 'You are already logged in'
                             })
-                        } else {
+                        }
+                        else {
                             Toast.fire({
                                 icon: 'error',
                                 title: 'Something went wrong, Try again !'
