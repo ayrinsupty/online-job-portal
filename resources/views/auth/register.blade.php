@@ -75,6 +75,7 @@
                             <div class="create-photo-item">
                                 <div class="create-photo-right">
                                     <div class="form-group">
+                                        <label for="">First name <span class="text-danger">*</span></label>
                                         <input type="text"
                                                class="form-control  @error('first_name') is-invalid @enderror"
                                                 name="first_name"
@@ -84,6 +85,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Last name <span class="text-danger">*</span></label>
                                         <input type="text"  name="last_name"
                                                class="form-control  @error('last_name') is-invalid @enderror"
                                                placeholder="Your Last Name Here"/>
@@ -92,6 +94,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Pnone no <span class="text-danger">*</span></label>
                                         <input type="tel"  name="phone"
                                                class="form-control  @error('phone') is-invalid @enderror"
                                                placeholder="Your Phone No Here"/>
@@ -100,6 +103,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Address <span class="text-danger">*</span></label>
                                         <input type="text" name="address"
                                                class="form-control  @error('address') is-invalid @enderror"
                                                placeholder="Your Address Here"/>
@@ -108,6 +112,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Email <span class="text-danger">*</span></label>
                                         <input type="email" name="email"
                                                class="form-control  @error('email') is-invalid @enderror"
                                                placeholder="Your Email Here"/>
@@ -116,6 +121,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Password <span class="text-danger">*</span></label>
                                         <input type="password" name="password"
                                                class="form-control  @error('password') is-invalid @enderror"
                                                placeholder="Your Password Here"/>
@@ -124,6 +130,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Confirm Password<span class="text-danger">*</span></label>
                                         <input type="password" name="password_confirmation"
                                                class="form-control  @error('password_confirmation') is-invalid @enderror"
                                                placeholder="Your Confirm Password Here"/>
@@ -132,6 +139,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Account Type<span class="text-danger">*</span></label>
                                         <select name="type" class="form-control  @error('password') is-invalid @enderror" id="" required>
                                             <option value="Seeker">Seeker</option>
                                             <option value="Agent">Agent</option>
@@ -151,6 +159,11 @@
                     </div>
                 </form>
             </div>
+            <style>
+                label{
+                    color: black;
+                }
+            </style>
         </div>
     </div>
 @endsection

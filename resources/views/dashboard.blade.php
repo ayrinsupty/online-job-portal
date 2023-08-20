@@ -28,10 +28,6 @@
     <div class="create-account-area pt-100 pb-100">
         <div class="container">
             <div class="create-photo">
-                <div class="already-create">
-                    <span>Already have an account?</span>
-                    <a href="{{ route('login') }}">Sign In</a>
-                </div>
 
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
@@ -76,6 +72,7 @@
                             <div class="create-photo-item">
                                 <div class="create-photo-right">
                                     <div class="form-group">
+                                        <label for="">First name <span class="text-danger">*</span></label>
                                         <input type="text"
                                                class="form-control  @error('first_name') is-invalid @enderror"
                                                value="{{ auth()->user()->first_name }}" name="first_name"
@@ -85,6 +82,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Last name <span class="text-danger">*</span></label>
                                         <input type="text" value="{{ auth()->user()->last_name }}" name="last_name"
                                                class="form-control  @error('last_name') is-invalid @enderror"
                                                placeholder="Last name"/>
@@ -93,6 +91,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Phone no<span class="text-danger">*</span></label>
                                         <input type="text" value="{{ auth()->user()->phone }}" name="phone"
                                                class="form-control  @error('phone') is-invalid @enderror"
                                                placeholder="Phone no"/>
@@ -101,6 +100,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Address<span class="text-danger">*</span></label>
                                         <input type="text" value="{{ auth()->user()->address }}" name="address"
                                                class="form-control  @error('address') is-invalid @enderror"
                                                placeholder="Address"/>
@@ -109,6 +109,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Linkedin<span class="text-success">(Optional)</span></label>
                                         <input type="text" value="{{ auth()->user()->linkedin }}" name="linkedin"
                                                class="form-control  @error('linkedin') is-invalid @enderror"
                                                placeholder="LinkedIn"/>
@@ -118,6 +119,7 @@
                                     </div>
                                     @role('Agent')
                                     <div class="form-group">
+                                        <label for="">Company Name<span class="text-success">*</span></label>
                                         <input type="text" value="{{ auth()->user()->company_name }}"
                                                name="company_name"
                                                class="form-control  @error('company_name') is-invalid @enderror"
@@ -127,6 +129,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Company Email<span class="text-success">*</span></label>
                                         <input type="text" value="{{ auth()->user()->company_email }}"
                                                name="company_email"
                                                class="form-control  @error('company_email') is-invalid @enderror"
@@ -136,6 +139,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Company Phone<span class="text-success">*</span></label>
                                         <input type="text" value="{{ auth()->user()->company_phone }}"
                                                name="company_phone"
                                                class="form-control  @error('company_phone') is-invalid @enderror"
@@ -145,6 +149,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Office Address<span class="text-success">*</span></label>
                                         <input type="text" value="{{ auth()->user()->office_address }}"
                                                name="office_address"
                                                class="form-control  @error('office_address') is-invalid @enderror"
@@ -154,6 +159,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Company Logo<span class="text-success">*</span></label>
                                         <input type="file" name="logo"
                                                class="form-control  @error('logo') is-invalid @enderror"/>
                                         @error('logo')
@@ -543,5 +549,8 @@
             {{--                <button type="submit" class="btn create-ac-btn">Save</button>--}}
             {{--            </div>--}}
         </div>
+        <style>
+            label{color: black;}
+        </style>
     </div>
 @endsection
