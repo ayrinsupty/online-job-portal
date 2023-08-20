@@ -42,7 +42,7 @@
                     <ul class="navbar-nav">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link dropdown-toggle">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                                <a class="nav-link dropdown-toggle">{{ Auth::user()->first_name }}
                                     <i
                                         class="icofont-simple-down"></i></a>
                                 <ul class="dropdown-menu">

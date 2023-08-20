@@ -133,7 +133,7 @@
                     @foreach($jobs as $job)
                         <div class="col-lg-6 mix web ui">
                             <div class="job-item">
-                                <img style="width: 80px;" src="{{ asset('images/' . $job->user->logo) }}" alt="Job">
+                                <img style="width: 80px;" src="{{ asset('images/' . $job->user->logo ?? "null") }}" alt="Job">
                                 <div class="job-inner align-items-center">
                                     <div class="job-inner-left">
                                         <h3>
