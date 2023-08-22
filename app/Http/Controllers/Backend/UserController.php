@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -74,6 +75,7 @@ class UserController extends Controller
             'last_name' => 'required|max:50',
             'username' => 'required|max:50',
             'email' => 'required|unique:users',
+            'password' => 'required|min:8',
             'phone' => 'required|max:11|min:11|regex:' . phoneNoRegex() . '|unique:' . with(new User)->getTable() . ',phone',
         ], [
             'first_name.required' => 'Please Insert First Name',
@@ -88,7 +90,10 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->type = $request->type;
-        $user->status = User::$statusArrays[0];
+        $user->password = Hash::make($request->password);
+        $user->save();
+        $user->assignRole($request->type);
+
 
         if (!empty($request->image)) {
             $user->image = imageUpload($request->image, 'User');

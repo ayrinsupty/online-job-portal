@@ -29,7 +29,7 @@ class CategoryController extends Controller
             'store_route' => route($this->store_route),
             'edit_route' => $this->edit_route,
             'update_route' => $this->update_route,
-            'base_url' => url('admin/categories'),
+            'base_url' => url('admin/category'),
 
         ];
     }

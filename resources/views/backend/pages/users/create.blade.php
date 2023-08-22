@@ -88,14 +88,25 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="basicInput">Password</label>
+                                            <input type="password" name="password"
+                                                class="form-control @error('password') is-invalid @enderror" id="password"
+                                                placeholder="Enter password">
+                                            @error('password')
+                                                <strong class="text-danger">{{ $errors->first('password') }}</strong>
+                                            @enderror
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="basicInput">User Type</label>
                                             <select name="type" required class="form-control" id="type">
                                                 <option value="">-- Choose Type --</option>
+                                                <option value="Super Admin">Admin</option>
                                                 <option value="Agent">Agent</option>
-                                                <option value="Seeker">Seeker</option>
                                               </select>
                                         </div>
                                     </div>

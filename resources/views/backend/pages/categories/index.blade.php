@@ -8,43 +8,43 @@
         <!-- Basic Tables start -->
         <section class="section">
             <div class="card">
-                <div class="card-header">{{ $pageHeader['title'] }} List </div>
+                <div class="card-header">{{ $pageHeader['title'] }} List</div>
                 <div class="card-body">
                     <table class="table" id="table1">
                         <thead>
-                            <tr>
-                                <th>Sl</th>
-                                <th>Name</th>
-                                <th>Action</th>
+                        <tr>
+                            <th>Sl</th>
+                            <th>Name</th>
+                            <th>Action</th>
 
-                            </tr>
+                        </tr>
                         </thead>
                         <tbody>
-                            @forelse ($datas as $data)
-                                <tr id="table-data{{ $data->id }}">
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $data->name }}</td>
+                        @forelse ($datas as $data)
+                            <tr id="table-data{{ $data->id }}">
+                                <td>{{ $loop->index + 1 }}</td>
+                                <td>{{ $data->name }}</td>
 
-                                    <td>
-                                            <a class="badge bg-info"
-                                                href="{{ route($pageHeader['edit_route'], $data->id) }}"><i
-                                                    class="fas fa-edit"></i></a>
+                                <td>
+                                    <a class="badge bg-info"
+                                       href="{{ route($pageHeader['edit_route'], $data->id) }}"><i
+                                            class="fas fa-edit"></i></a>
 
-                                            <a class="badge bg-danger" href="javascript:void(0)"
-                                                onclick="dataDelete({{ $data->id }},'{{ $pageHeader['base_url'] }}')"><i
-                                                    class="fas fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="2"></td>
-                                    <td colspan="6">No Data Found <a class="btn btn-info"
-                                            href="{{ $pageHeader['create_route'] }}">Create
-                                            {{ $pageHeader['singular_name'] }}</a>
-                                    </td>
-                                    <td colspan="2"></td>
-                                </tr>
-                            @endforelse
+                                    <a class="badge bg-danger" href="javascript:void(0)"
+                                       onclick="dataDelete({{ $data->id }},'{{ $pageHeader['base_url'] }}')"><i
+                                            class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="6">No Data Found <a class="btn btn-info"
+                                                                 href="{{ $pageHeader['create_route'] }}">Create
+                                        {{ $pageHeader['singular_name'] }}</a>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end">
