@@ -98,7 +98,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea name="description"
+                                            <textarea name="description" id="summernote"
                                                       class="form-control @error('description') is-invalid @enderror"
                                                       rows="2" cols="2"></textarea>
                                             @error('description')
@@ -119,6 +119,14 @@
                 </div>
             </div>
         </section>
+        <link rel="stylesheet" href="{{ asset('/backend/assets/vendors/summernote/summernote-lite.min.css') }}">
+        <script src="{{ asset('/backend/assets/vendors/summernote/summernote-lite.min.js') }}"></script>
 
+        <script>
+            $('#summernote').summernote({
+                tabsize: 2,
+                height: 120,
+            })
+        </script>
     </div>
 @endsection

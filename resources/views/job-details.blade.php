@@ -123,7 +123,7 @@
                         <p><strong>{{ $jobDetails->short_description }}</strong></p>
                         <hr>
                         <h4>Description</h4>
-                        <p>{{ $jobDetails->description }}</p>
+                        <p>{!! $jobDetails->description !!}</p>
                         <hr>
                         @php
                             $userId = null;

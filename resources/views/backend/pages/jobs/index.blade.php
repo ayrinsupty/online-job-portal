@@ -34,7 +34,7 @@
                                                 href="{{ route('admin.all.apply',$data->id) }}"><i
                                                     class="fas fa-book"></i>({{ $data->applicant_count }})</a>
                                             <a class="badge bg-danger" href="javascript:void(0)"
-                                                onclick="dataDelete({{ $data->id }},'job-post')"><i
+                                                onclick="dataDelete({{ $data->id }},'job')"><i
                                                     class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
